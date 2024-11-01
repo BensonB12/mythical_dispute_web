@@ -2,6 +2,13 @@
 
 The Mythical Creatures are going extict, not from Humans, but from *Eachother*
 
-You are a Mythical Creature and you have an opponent who is a diffrent Mythical Creature.
+You and your opponent are a Mythical Creatures, kill, or get killed.
 
-You will be going out
+Before your big battle, you and your opponent go out to recruit your Animal Army. This will be represented by a deck of cards. At the end of the draft/recruitment the battle will be decited by your total power in the Water location, Land location, and Air location. Whoever wins in two out of the three locations defeats the other! Ties will result is some tie breakers.
+
+In this game you recruit animals, eat animals, and these animals have special abilities that syncronise with eachother, with you, and even care about what your opponents creatures look like!
+
+This game is a take on 'Winston Drafting' from Magic The Gathering.
+
+This website will let you sign in and play against your friends signed in!
+It is only a two player game.
