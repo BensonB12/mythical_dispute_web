@@ -1,4 +1,5 @@
 # Mythical Dispute <br /> <sub>Draft Your Animal Army</sub>
+#### By Benson Bird
 
 The Mythical Creatures are going extict, not from Humans, but from *Eachother*
 
