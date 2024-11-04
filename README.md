@@ -78,7 +78,7 @@ It is only a two player game.
 
 # Goals by Week (Rubric)
 
-| Rubric Requirement   | Nov 6 | Nov 9 | Nov 13 | Nov 16 | Nov 20 | Nov 23 | Nov 26 | Dec 4 |
+|                      | Nov 6 | Nov 9 | Nov 13 | Nov 16 | Nov 20 | Nov 23 | Nov 26 | Dec 4 |
 | -------------------- | ----- | ----- | ------ | ------ | ------ | ------ | ------ | ----- |
 | Scope                | 0/30  |       |        |        |        |        |        |       |
 | Local Storage        | 0/5   |       |        |        |        |        |        |       |
