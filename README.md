@@ -18,39 +18,60 @@ It is only a two player game.
 # Goals by Week (Feature)
 
 - [ ] Nov 6
-  - [ ] Authentication set up
+  - [ ] User can sign in
 - [ ] Nov 9
-  - [ ] Database is up
-  - [ ] CI / CD (runs on kube)
+  - [ ] Card data is in Alex's server
+  - [ ] User can see the website on Alex's Server
+  - [ ] Every Update I make pushes it to Alex's Server
+  - [ ] Tests are ran before put into Alex's Server
 - [ ] Nov 13
+  - [ ] Card Data can be seen on the client
+  - [ ] There are no exposed errors to the user
+  - [ ] Users will see appropriate 'Toasts'
 - [ ] Nov 16
+  - [ ] There will be multiple forms that are not specific to the page
+  - [ ] There will be multiple / common themes and layouts (at least four)
 - [ ] Nov 20
+  - [ ] Users will have specific data to them
+  - [ ] Users can alter their users data
 - [ ] Nov 23
+  - [ ] There will be ten different pages the user can see and access
+  - [ ] Every page in my app will be made and reasonably designed, but not quite a full functioning application
 - [ ] Nov 26
+  - [ ] There will be full tests for the actual step by step process of the game
+  - [ ] Each card will have its own image
+  - [ ] Users will be able to interact with each other
+  - [ ] There will be at least ten different cards that are fully functional
 - [ ] Dec 4
+  - [ ] Every card will be functional
+  - [ ] No outstanding bugs
+  - [ ] The design will live up to my expectations
+  - [ ] The whole app can be viewed as a phone view
+  - [ ] The phone view will be able to be vertical or horizontal
 
 # Goals by Week (Rubric)
 
-|                      | Nov 6     | Nov 9 | Nov 13 | Nov 16 | Nov 20 | Nov 23 | Nov 26 | Dec 4 |
-| -------------------- | --------- | ----- | ------ | ------ | ------ | ------ | ------ | ----- |
-| Scope                | 0/30      |       |        |        |        |        |        |       |
-| Local Storage        | 0/5       |       |        |        |        |        |        |       |
-| Tanstack Query       | 0/5       |       |        |        |        |        |        |       |
-| Toasts               | 0/5       |       |        |        |        |        |        |       |
-| Error Handling       | 0/5       |       |        |        |        |        |        |       |
-| CRUD Calls           | 0/5       |       |        |        |        |        |        |       |
-| Typescript           | 0/5       |       |        |        |        |        |        |       |
-| 10+ Pages            | 0/5       |       |        |        |        |        |        |       |
-| CI / CD              | 0/5       |       |        |        |        |        |        |       |
-| CD Relies on Tests   | 0/5       |       |        |        |        |        |        |       |
-| 3+ Generic Forms     | 0/9       |       |        |        |        |        |        |       |
-| 4+ Generic Layout    | 0/12      |       |        |        |        |        |        |       |
-| Auth & User Account  | 0/10      |       |        |        |        |        |        |       |
-| Auth & Public Pages  | 0/5       |       |        |        |        |        |        |       |
-| Mobile               | 0/5       |       |        |        |        |        |        |       |
-| 3 Mobile _Redesigns_ | 0/5       |       |        |        |        |        |        |       |
-| Professional         | 0/20      |       |        |        |        |        |        |       |
-| **Total**            | **0/136** |       |        |        |        |        |        |       |
+|                      | Nov 6      | Nov 9      | Nov 13     | Nov 16      | Nov 20      | Nov 23      | Nov 26      | Dec 4       |
+| -------------------- | ---------- | ---------- | ---------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| Scope                | 5/30       | 5/30       | 10/30      | 15/30       | 20/30       | 25/30       | 30/30       | 30/30       |
+| Local Storage        | 0/5        | 0/5        | 0/5        | 0/5         | 5/5         | 5/5         | 5/5         | 5/5         |
+| Tanstack Query       | 0/5        | 0/5        | 5/5        | 5/5         | 5/5         | 5/5         | 5/5         | 5/5         |
+| Toasts               | 0/5        | 0/5        | 5/5        | 5/5         | 5/5         | 5/5         | 5/5         | 5/5         |
+| Error Handling       | 0/5        | 0/5        | 5/5        | 5/5         | 5/5         | 5/5         | 5/5         | 5/5         |
+| CRUD Calls           | 0/5        | 0/5        | 0/5        | 0/5         | 5/5         | 5/5         | 5/5         | 5/5         |
+| Typescript           | 5/5        | 5/5        | 5/5        | 5/5         | 5/5         | 5/5         | 5/5         | 5/5         |
+| 10+ Pages            | 0/5        | 1/5        | 1/5        | 3/5         | 3/5         | 5/5         | 5/5         | 5/5         |
+| CI / CD              | 0/5        | 5/5        | 5/5        | 5/5         | 5/5         | 5/5         | 5/5         | 5/5         |
+| CD Relies on Tests   | 0/5        | 5/5        | 5/5        | 5/5         | 5/5         | 5/5         | 5/5         | 5/5         |
+| 3+ Generic Forms     | 0/9        | 0/9        | 0/9        | 9/9         | 9/9         | 9/9         | 9/9         | 9/9         |
+| 4+ Generic Layout    | 0/12       | 0/12       | 0/12       | 12/12       | 12/12       | 12/12       | 12/12       | 12/12       |
+| Auth & User Account  | 5/10       | 5/10       | 5/10       | 5/10        | 10/10       | 10/10       | 10/10       | 10/10       |
+| Auth & Public Pages  | 5/5        | 5/5        | 5/5        | 5/5         | 5/5         | 5/5         | 5/5         | 5/5         |
+| Mobile               | 5/5        | 5/5        | 5/5        | 5/5         | 5/5         | 5/5         | 5/5         | 5/5         |
+| 3 Mobile _Redesigns_ | 0/5        | 0/5        | 5/5        | 5/5         | 5/5         | 5/5         | 5/5         | 5/5         |
+| Professional         | 20/20      | 20/20      | 20/20      | 20/20       | 20/20       | 20/20       | 20/20       | 20/20       |
+| **Total**            | **45/141** | **56/141** | **86/141** | **114/141** | **129/141** | **136/141** | **141/141** | **141/141** |
+| **∆**                | **45**     | **11**     | **25**     | **23**      | **20**      | **7**       | **5**       | **0**       |
 
 # Features
 
