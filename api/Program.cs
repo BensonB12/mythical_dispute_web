@@ -21,5 +21,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapGet("/api/health", () => true);
 
 app.Run();
