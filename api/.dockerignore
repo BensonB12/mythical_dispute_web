@@ -1,0 +1,38 @@
+# .dockerignore for C# Web API
+
+# Ignore .NET build output directories
+**/bin/
+**/obj/
+
+# Ignore user-specific and temporary files
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore any locally installed packages and compiled code
+packages/
+*.nupkg
+
+# Ignore configuration files for local environments
+appsettings.Development.json
+appsettings.Local.json
+
+# Ignore version control and system files
+.git/
+.gitignore
+*.DS_Store
+*.env
+
+# Ignore Dockerfile and .dockerignore itself if not needed in the image
+.dockerignore
+Dockerfile
+
+# Ignore other IDE or OS-specific directories
+*.vs/
+*.vscode/
+*.swp
+*.tmp
+*.log

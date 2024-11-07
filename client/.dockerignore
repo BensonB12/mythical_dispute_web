@@ -1,0 +1,31 @@
+# .dockerignore for Vite/React/TypeScript
+
+# Ignore node_modules (will be installed in the container)
+node_modules/
+npm-debug.log
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore build output directory
+dist/
+build/
+
+# Ignore environment and local configuration files
+.env
+.env.*  # catches .env.local, .env.development, etc.
+
+# Ignore version control and system files
+.git/
+.gitignore
+*.DS_Store
+
+# Ignore IDE or editor-specific directories and files
+.vscode/
+.idea/
+*.swp
+*.log
+*.tmp
+
+# Ignore Dockerfile and .dockerignore if they are not required in the final image
+.dockerignore
+Dockerfile
