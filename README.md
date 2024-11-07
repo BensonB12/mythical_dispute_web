@@ -15,6 +15,41 @@ This game is a take on 'Winston Drafting' from Magic The Gathering.
 This website will let you sign in and play against your friends signed in!
 It is only a two player game.
 
+# Actually Done (Feature)
+
+- [x] Nov 6
+  - [x] You can see my website from Alex's server
+  - [x] Data in a database is on Alex's server
+  - [x] You can hit my API on Alex's server
+  - [x] Duckdns is working (http://...)
+  - [x] Automatic Deployments
+
+# Actual Rubric
+
+# Goals by Week (Rubric)
+
+|                      | Nov 6      | Nov 9 | Nov 13 | Nov 16 | Nov 20 | Nov 23 | Nov 26 | Dec 4 |
+| -------------------- | ---------- | ----- | ------ | ------ | ------ | ------ | ------ | ----- |
+| Scope                | 5/30       |       |        |        |        |        |        |       |
+| Local Storage        | 0/5        |       |        |        |        |        |        |       |
+| Tanstack Query       | 0/5        |       |        |        |        |        |        |       |
+| Toasts               | 0/5        |       |        |        |        |        |        |       |
+| Error Handling       | 0/5        |       |        |        |        |        |        |       |
+| CRUD Calls           | 0/5        |       |        |        |        |        |        |       |
+| Typescript           | 5/5        |       |        |        |        |        |        |       |
+| 10+ Pages            | 0/5        |       |        |        |        |        |        |       |
+| CI / CD              | 5/5        |       |        |        |        |        |        |       |
+| CD Relies on Tests   | 0/5        |       |        |        |        |        |        |       |
+| 3+ Generic Forms     | 0/9        |       |        |        |        |        |        |       |
+| 4+ Generic Layout    | 0/12       |       |        |        |        |        |        |       |
+| Auth & User Account  | 5/10       |       |        |        |        |        |        |       |
+| Auth & Public Pages  | 5/5        |       |        |        |        |        |        |       |
+| Mobile               | 5/5        |       |        |        |        |        |        |       |
+| 3 Mobile _Redesigns_ | 0/5        |       |        |        |        |        |        |       |
+| Professional         | 20/20      |       |        |        |        |        |        |       |
+| **Total**            | **50/141** |       |        |        |        |        |        |       |
+| **∆**                | **50**     |       |        |        |        |        |        |       |
+
 # Goals by Week (Feature)
 
 - [ ] Nov 6
