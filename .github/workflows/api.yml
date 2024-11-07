@@ -1,0 +1,44 @@
+name: Deployment the API & DB to server 2
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - api/**
+      - .github/workflows/api.yml
+  workflow_dispatch:
+jobs:
+  build-and-push:
+    runs-on: [self-hosted, benson]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Build and push
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/mythical_api:latest -t ${{ secrets.DOCKERHUB_USERNAME }}/mythical_api:${{ github.run_number }} ./api
+          docker push --all-tags ${{ secrets.DOCKERHUB_USERNAME }}/mythical_api
+
+      - name: Deploy to Kubernetes
+        run: |
+          export PATH=$PATH:~.nix-profile/bin:/nix/var/nix/profiles/default/bin
+          export IMAGE_TAG=${{ github.run_number }}
+          export DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
+          export PG_USER=${{ secrets.PG_USER }}
+          export PG_DB=${{ secrets.PG_DB }}
+          export PG_PASSWORD=${{ secrets.PG_PASSWORD }}
+
+          kubectl get namespace benson || kubectl create namespace benson
+          kubectl delete configmap postgres-schema --namespace=benson || true
+          kubectl create configmap postgres-schema --from-file=api/schema.sql --namespace=benson
+
+          for file in api/kube/*; do 
+              cat "$file" | envsubst | kubectl apply -f -; 
+          done

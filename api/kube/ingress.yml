@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mythical-api-ingress
+  namespace: benson
+spec:
+  rules:
+    - host: api.mythical-dispute.duckdns.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mythical-api-service
+                port:
+                  number: 8080

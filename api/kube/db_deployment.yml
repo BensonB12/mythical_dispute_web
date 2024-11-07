@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mythical-db-deployment
+  namespace: benson
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mythical-db
+  template:
+    metadata:
+      labels:
+        app: mythical-db
+    spec:
+      containers:
+        - name: mythical-db
+          image: postgres
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: "${PG_DB}"
+            - name: POSTGRES_USER
+              value: "${PG_USER}"
+            - name: POSTGRES_PASSWORD
+              value: "${PG_PASSWORD}"
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-storage
+            - mountPath: /docker-entrypoint-initdb.d
+              name: schema-volume
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: mythical-db-pvc
+        - name: schema-volume
+          configMap:
+            name: postgres-schema
