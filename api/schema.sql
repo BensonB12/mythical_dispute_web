@@ -29,17 +29,19 @@ DROP TABLE IF EXISTS md_user CASCADE;
 
 -- Upgrade by using indexes for game_id, winner_id, player_turn_id, other_player_id ...
 
-CREATE TABLE md_user (
-  id SERIAL PRIMARY KEY,
-  username TEXT NOT NULL,
-  notifications BOOLEAN NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
 CREATE TABLE user_color (
   id SERIAL PRIMARY KEY,
   hex_value VARCHAR(7) NOT NULL,
   CONSTRAINT valid_hex CHECK (hex_value ~ '^#[0-9A-F]{6}$')
+);
+
+CREATE TABLE md_user (
+  id SERIAL PRIMARY KEY,
+  username TEXT NOT NULL,
+  notifications BOOLEAN NOT NULL,
+  user_color_id INTEGER,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY user_color_id REFERENCES user_color(id) ON DELETE SET NULL
 );
 
 CREATE TABLE artist (
