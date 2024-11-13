@@ -38,7 +38,7 @@ CREATE TABLE user_color (
 CREATE TABLE md_user (
   id SERIAL PRIMARY KEY,
   username TEXT NOT NULL,
-  notifications BOOLEAN NOT NULL,
+  notifications BOOLEAN NOT NULL DEFAULT FALSE,
   user_color_id INTEGER,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY user_color_id REFERENCES user_color(id) ON DELETE SET NULL
@@ -225,3 +225,13 @@ AFTER UPDATE OF artist_id ON card
 FOR EACH ROW
 WHEN (OLD.artist_id IS DISTINCT FROM NEW.artist_id AND NEW.artist_id IS NULL)
 EXECUTE FUNCTION update_img_url_when_artist_id_null();
+
+-- INSERT INTO user_color (id, hex_value) VALUES (-1, "#41EAD4");
+-- INSERT INTO md_user (username, user_color_id) VALUES ("benson", -1);
+-- INSERT INTO artist (artist_name) VALUES ("Benson Bird");
+-- INSERT INTO animal_class (class_name) VALUES ("");
+-- INSERT INTO family_class (family_name) VALUES ("");
+-- INSERT INTO size (size_display) VALUES ("small"), ("medium"), ("large"), ("any"), ("all");
+-- INSERT INTO card (class_name, animal_class_id, family_id, size_id, air_value, land_value, water_value, text_box, img_url, artist_id) VALUES ("");
+-- INSERT INTO location (location_name) VALUES ("Air"), ("Land"), ("Water");
+-- INSERT INTO card_zone (card_zone_value) VALUES ("") How do I know what hand is who's?
