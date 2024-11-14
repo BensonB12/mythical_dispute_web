@@ -18,42 +18,56 @@ It is only a two player game.
 # Actually Done (Feature)
 
 - [x] Nov 6
-  - [x] You can see my website from Alex's server
-  - [x] Data in a database is on Alex's server
-  - [x] You can hit my API on Alex's server
   - [x] Duckdns is working (http://...)
   - [x] Automatic Deployments
+  - Alex's server now holds my
+    - [x] Website
+    - [x] Database
+    - [x] Api
 - [x] Nov 9
   - [x] You can login to keycloak on the client now
   - [x] There is a realm just for this project
   - [x] The realm now holds the users personal information, personal to this project
   - [x] There is now a database that is ready for production and will hold users info
+- [x] Nov 13
+  - [x] There are now images in the api, and a docker image that has all the starting images
+  - There are now tests
+    - [x] Client using vitest
+    - [x] API using xunit
+  - The Pipeline now depends on
+    - [x] No build errors
+    - [x] Tests
+    - [x] Linting
+  - The client now has
+    - [x] Routing
+    - [x] Tanstack Query Hooks
+    - [x] Axios access
 
 # Actual Rubric
 
 # Goals by Week (Rubric)
 
-|                      | Nov 6      | Nov 9      | Nov 13 | Nov 16 | Nov 20 | Nov 23 | Nov 26 | Dec 4 |
-| -------------------- | ---------- | ---------- | ------ | ------ | ------ | ------ | ------ | ----- |
-| Scope                | 5/30       | 5/30       |        |        |        |        |        |       |
-| Local Storage        | 0/5        | 0/5        |        |        |        |        |        |       |
-| Tanstack Query       | 0/5        | 0/5        |        |        |        |        |        |       |
-| Toasts               | 0/5        | 0/5        |        |        |        |        |        |       |
-| Error Handling       | 0/5        | 0/5        |        |        |        |        |        |       |
-| CRUD Calls           | 0/5        | 0/5        |        |        |        |        |        |       |
-| Typescript           | 5/5        | 5/5        |        |        |        |        |        |       |
-| 10+ Pages            | 0/5        | 0/5        |        |        |        |        |        |       |
-| CI / CD              | 5/5        | 5/5        |        |        |        |        |        |       |
-| CD Relies on Tests   | 0/5        | 0/5        |        |        |        |        |        |       |
-| 3+ Generic Forms     | 0/9        | 0/9        |        |        |        |        |        |       |
-| 4+ Generic Layout    | 0/12       | 0/12       |        |        |        |        |        |       |
-| Auth & User Account  | 5/10       | 10/10      |        |        |        |        |        |       |
-| Auth & Public Pages  | 5/5        | 5/5        |        |        |        |        |        |       |
-| Mobile               | 5/5        | 5/5        |        |        |        |        |        |       |
-| 3 Mobile _Redesigns_ | 0/5        | 0/5        |        |        |        |        |        |       |
-| Professional         | 20/20      | 20/20      |        |        |        |        |        |       |
-| **Total**            | **50/141** | **55/141** |        |        |        |        |        |       |
-| **∆**                | **50**     | **5**      |        |        |        |        |        |       |
+|                      | Nov 6      | Nov 9      | Nov 13     | Nov 16 | Nov 20 | Nov 23 | Nov 26 | Dec 4 |
+| -------------------- | ---------- | ---------- | ---------- | ------ | ------ | ------ | ------ | ----- |
+| Scope                | 5/30       | 5/30       | 5/30       |        |        |        |        |       |
+| Local Storage        | 0/5        | 0/5        | 0/5        |        |        |        |        |       |
+| Tanstack Query       | 0/5        | 0/5        | 5/5        |        |        |        |        |       |
+| Toasts               | 0/5        | 0/5        | 0/5        |        |        |        |        |       |
+| Error Handling       | 0/5        | 0/5        | 0/5        |        |        |        |        |       |
+| CRUD Calls           | 0/5        | 0/5        | 0/5        |        |        |        |        |       |
+| Typescript           | 5/5        | 5/5        | 5/5        |        |        |        |        |       |
+| 10+ Pages            | 0/5        | 0/5        | 1/5        |        |        |        |        |       |
+| CI / CD              | 5/5        | 5/5        | 5/5        |        |        |        |        |       |
+| CD Relies on Tests   | 0/5        | 0/5        | 5/5        |        |        |        |        |       |
+| 3+ Generic Forms     | 0/9        | 0/9        | 0/9        |        |        |        |        |       |
+| 4+ Generic Layout    | 0/12       | 0/12       | 0/12       |        |        |        |        |       |
+| Auth & User Account  | 5/10       | 10/10      | 10/10      |        |        |        |        |       |
+| Auth & Public Pages  | 5/5        | 5/5        | 5/5        |        |        |        |        |       |
+| Mobile               | 5/5        | 5/5        | 5/5        |        |        |        |        |       |
+| 3 Mobile _Redesigns_ | 0/5        | 0/5        | 0/5        |        |        |        |        |       |
+| Professional         | 20/20      | 20/20      | 20/20      |        |        |        |        |       |
+| **Total**            | **50/141** | **55/141** | **66/141** |        |        |        |        |       |
+| **∆**                | **50**     | **5**      | **11**     |        |        |        |        |       |
 
 # Goals by Week (Feature)
 
