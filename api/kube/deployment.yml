@@ -18,6 +18,18 @@ spec:
       labels:
         app: mythical-api
     spec:
+      initContainers:
+        - name: init-seed-images
+          image: ${DOCKERHUB_USERNAME}/mythical_inventory_images:4
+          command:
+            [
+              "sh",
+              "-c",
+              'if [ -z "$(ls -A /app/images)" ]; then cp -r /seededImages/* /app/images/; fi',
+            ]
+          volumeMounts:
+            - name: images-storage
+              mountPath: /app/images
       containers:
         - name: mythical-api
           image: ${DOCKERHUB_USERNAME}/mythical_api:${IMAGE_TAG}
@@ -47,3 +59,7 @@ spec:
               port: 8080
             initialDelaySeconds: 15
             periodSeconds: 20
+      volumes:
+        - name: images-storage
+          persistentVolumeClaim:
+            claimName: mythical-img-pvc

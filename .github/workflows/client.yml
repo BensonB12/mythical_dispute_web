@@ -8,8 +8,48 @@ on:
       - .github/workflows/client.yml
   workflow_dispatch:
 jobs:
+  node-build-lint-test:
+    runs-on: [self-hosted, benson]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: |
+          cd ./client
+          npm ci
+          cd ..
+
+      - name: Build the client
+        run: |
+          cd ./client
+          npm run build -- --max-warnings=0
+          cd ..
+        continue-on-error: false
+
+      - name: Run Linter
+        run: |
+          cd ./client
+          npm run lint --max-warnings=0
+          cd ..
+        continue-on-error: false
+
+      - name: Run tests
+        run: |
+          cd ./client
+          npm run test
+          cd ..
+        continue-on-error: false
+
   build-and-push:
     runs-on: [self-hosted, benson]
+    needs: node-build-lint-test
 
     steps:
       - name: Checkout code

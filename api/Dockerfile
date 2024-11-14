@@ -4,9 +4,6 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 # Set the working directory inside the container
 WORKDIR /app
 
-# Does not actually change anything
-EXPOSE 8080
-
 # Copy the project file and restore dependencies
 COPY *.csproj .
 RUN dotnet restore
@@ -25,9 +22,7 @@ WORKDIR /app
 
 # Copy the build output from the first stage
 COPY --from=build /app/publish .
-
-# Does not actually change anything
-EXPOSE 8080
+ENV PATH_TO_IMAGES /app/images
 
 # Define the entrypoint to run the app
 ENTRYPOINT ["dotnet", "api.dll"]

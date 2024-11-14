@@ -8,8 +8,40 @@ on:
       - .github/workflows/api.yml
   workflow_dispatch:
 jobs:
+  dotnet-build-lint-test:
+    runs-on: [self-hosted, benson]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "8.0"
+
+      - name: Restore dependencies
+        run: |
+          dotnet restore ./mythical_dispute_web.sln
+
+      - name: Build the solution
+        run: |
+          dotnet build ./mythical_dispute_web.sln --configuration Release --warnaserror
+        continue-on-error: false
+
+      - name: Run .NET Linter (e.g., dotnet format)
+        run: |
+          dotnet format ./api --verify-no-changes --severity warn
+        continue-on-error: false
+
+      - name: Run tests
+        run: |
+          dotnet test apiTests/apiTests.csproj
+        continue-on-error: false
+
   build-and-push:
     runs-on: [self-hosted, benson]
+    needs: dotnet-build-lint-test
 
     steps:
       - name: Checkout code
