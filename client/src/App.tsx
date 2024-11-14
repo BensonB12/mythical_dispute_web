@@ -1,10 +1,11 @@
-import { LoginButton } from "./features/auth/LoginButton"
+import { LoginButton } from "./features/auth/LoginButton";
+import { AppRoutes } from "./AppRoutes";
 
 export const App = () => {
   return (
     <>
       <LoginButton />
-      <div>Welcome to Benson's app!</div>
+      <AppRoutes />
     </>
-  )
-}
+  );
+};

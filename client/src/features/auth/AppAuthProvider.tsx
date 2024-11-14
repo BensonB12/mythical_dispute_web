@@ -39,6 +39,6 @@ const oidcConfig: AuthProviderProps = {
   },
 };
 
-export const Providers: FC<{ children: ReactNode }> = ({ children }) => {
+export const AppAuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   return <AuthProvider {...oidcConfig}>{children}</AuthProvider>;
 };

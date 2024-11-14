@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css?family=Crimson Text");
+$font-family-base: "Crimson Text";
+
+// Default variable overrides
+$primary: #962910;
+$info: #1cd13a;
+$success: #20c7dd;
+$warning: #b68c19;
+$danger: #d81196;
+$dark: #2b2118;
+$light: #f7f3e3;
+
+// Required imports
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+// Add custom colors here
+$custom-colors: (
+  "grey": #c8d1da,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// Required imports
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
