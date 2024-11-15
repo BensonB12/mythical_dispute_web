@@ -10,16 +10,16 @@
 @import url("https://fonts.googleapis.com/css?family=Crimson Text");
 $font-family-base: "Crimson Text";
 
-$primary: #962910;
-$info: #1cd13a;
-$success: #20c7dd;
-$warning: #b68c19;
-$danger: #d81196;
-$dark: #2b2118;
-$light: #f7f3e3;
+// $primary: #962910;
+// $info: #1cd13a;
+// $success: #20c7dd;
+// $warning: #b68c19;
+// $danger: #d81196;
+// $dark: #2b2118;
+// $light: #f7f3e3;
 
-$custom-colors: (
-  "grey": #c8d1da,
-);
+// $custom-colors: (
+//   "grey": #c8d1da,
+// );
 
-$theme-colors: map-merge($theme-colors, $custom-colors);
+// $theme-colors: map-merge($theme-colors, $custom-colors);
