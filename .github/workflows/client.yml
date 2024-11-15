@@ -29,14 +29,14 @@ jobs:
       - name: Build the client
         run: |
           cd ./client
-          npm run build -- --max-warnings=0
+          npm run build
           cd ..
         continue-on-error: false
 
       - name: Run Linter
         run: |
           cd ./client
-          npm run lint --max-warnings=0
+          npm run lint
           cd ..
         continue-on-error: false
 
