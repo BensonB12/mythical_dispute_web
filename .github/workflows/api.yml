@@ -17,9 +17,11 @@ jobs:
 
       - name: Set up .NET SDK path
         run: |
-          export DOTNET_ROOT=$HOME/.dotnet
-          export PATH=$DOTNET_ROOT:$PATH
-          dotnet --version  # Verifies that dotnet is accessible
+          echo "$HOME/.dotnet" >> $GITHUB_PATH  # Add .dotnet to PATH for the entire job
+
+      - name: Verify .NET installation
+        run: |
+          dotnet --version
 
       - name: Restore dependencies
         run: |
