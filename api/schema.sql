@@ -228,12 +228,103 @@ FOR EACH ROW
 WHEN (OLD.artist_id IS DISTINCT FROM NEW.artist_id AND NEW.artist_id IS NULL)
 EXECUTE FUNCTION update_img_url_when_artist_id_null();
 
--- INSERT INTO user_color (id, hex_value) VALUES (-1, "#41EAD4");
--- INSERT INTO md_user (username, user_color_id) VALUES ("benson", -1);
--- INSERT INTO artist (artist_name) VALUES ("Benson Bird", "Saytress", "GraphicMama-team", "JohannaIris", "MostafaEITurkey36");
--- INSERT INTO animal_class (class_name) VALUES ("");
--- INSERT INTO family_class (family_name) VALUES ("");
--- INSERT INTO size (size_display) VALUES ("small"), ("medium"), ("large"), ("any"), ("all");
--- INSERT INTO card (class_name, animal_class_id, family_id, size_id, air_value, land_value, water_value, text_box, img_url, artist_id) VALUES ("");
--- INSERT INTO location (location_name) VALUES ("Air"), ("Land"), ("Water");
--- INSERT INTO card_zone (card_zone_value) VALUES ("deck", "pile1", "pile2", "pile3");
+INSERT INTO user_color (hex_value) VALUES ('#41EAD4');
+
+ALTER TABLE md_user
+  ALTER COLUMN user_color_id SET DEFAULT (SELECT id FROM user_color WHERE hex_value = '#41EAD4');
+
+INSERT INTO md_user (username, user_color_id) VALUES ('benson', (SELECT id FROM user_color WHERE hex_value = '#41EAD4'));
+
+INSERT INTO artist (artist_name) VALUES 
+  ('Benson Bird'), 
+  ('Saytress'), 
+  ('GraphicMama-team'), 
+  ('JohannaIris'), 
+  ('MostafaEITurkey36');
+
+INSERT INTO animal_class (class_name) VALUES 
+  ('Mythical'),
+  ('Mammal'), 
+  ('Bird'), 
+  ('Fish'),
+  ('Reptile'),
+  ('Amphibian'),
+  ('Plant');
+
+INSERT INTO family (family_name) VALUES 
+  ('Whirlpool'), 
+  ('Pegasus'), 
+  ('Dragon'), 
+  ('Phoenix'), 
+  ('Bigfoot'), 
+  ('Loch Ness'), 
+  ('Humming Bird'), 
+  ('Eagle'), 
+  ('Parrot'), 
+  ('Swan'),
+  ('Hawk'),
+  ('Wolf'),
+  ('Squirrel'),
+  ('Bat'),
+  ('Cow'),
+  ('Elephant'),
+  ('Clownfish'),
+  ('Swordfish'),
+  ('Shark'),
+  ('Sardine'),
+  ('Moorish Idol'),
+  ('Frog'),
+  ('Crocodile'),
+  ('Iguana'),
+  ('Log');
+
+INSERT INTO size (size_display) VALUES 
+  ('all'),
+  ('any'), 
+  ('small'), 
+  ('medium'), 
+  ('large');
+
+INSERT INTO card (card_name, animal_class_id, family_id, size_id, air_value, land_value, water_value, text_box, img_url, artist_id) 
+VALUES 
+  ('Eagle', 2, 1, 3, 'high', 10, 5, 1, 'http://example.com/eagle.jpg', 1);
+
+INSERT INTO location (location_name) VALUES 
+  ('All'),
+  ('Any'),
+  ('Air'), 
+  ('Land'), 
+  ('Water');
+
+INSERT INTO card_zone (card_zone_value) VALUES 
+  ('deck'), 
+  ('pile1'), 
+  ('pile2'), 
+  ('pile3');
+
+-- all three location values
+INSERT INTO card (card_name, animal_class_id, family_id, size_id, air_value, land_value, water_value, text_box, img_url, artist_id) 
+VALUES ('Blackjack', (SELECT id FROM animal_class WHERE class_name = 'Mythical'), (SELECT id FROM family WHERE family_name = 'Pegasus'), (SELECT id FROM size WHERE size_display = 'medium'), 6, 2, 2, 'Double any amount of recruit friends you get', '/image/Blackjack.png', (SELECT id FROM artist WHERE artist_name = 'Saytress')),
+('Charybdis', (SELECT id FROM animal_class WHERE class_name = 'Mythical'), (SELECT id FROM family WHERE family_name = 'Whirlpool'), (SELECT id FROM size WHERE size_display = 'large'), 1, NULL, 8, '*Eat & Recruiting* - do the same to the top of the deck', '/image/Charybdis.png', (SELECT id FROM artist WHERE artist_name = 'Benson Bird'));
+('Phil', (SELECT id FROM animal_class WHERE class_name = 'Mythical'), (SELECT id FROM family WHERE family_name = 'Phoenix'), (SELECT id FROM size WHERE size_display = 'large'), 6, 1, 2, '*Eat* - Create a friendly ash token that has value zero in land, but the same text box', '/image/Phil.png', (SELECT id FROM artist WHERE artist_name = 'JohannaIris')),
+('Zoom', (SELECT id FROM animal_class WHERE class_name = 'Bird'), (SELECT id FROM family WHERE family_name = 'Humming Bird'), (SELECT id FROM size WHERE size_display = 'medium'), 3, 2, NULL, '/image/Zoom.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
+('Deanna', (SELECT id FROM animal_class WHERE class_name = 'Bird'), (SELECT id FROM family WHERE family_name = 'Parrot'), (SELECT id FROM size WHERE size_display = 'small'), 2, 2, NULL, '*Battle* - I gain a random enemy''s text box', '/image/Deanna.png', (SELECT id FROM artist WHERE artist_name = 'Saytress')),
+('Draco', (SELECT id FROM animal_class WHERE class_name = 'Mythical'), (SELECT id FROM family WHERE family_name = 'Dragon'), (SELECT id FROM size WHERE size_display = 'large'), 8, 3, NULL, 'If I has a total higher value than your opposing''s *M* total value Double all your buffs', '/image/Draco.png', (SELECT id FROM artist WHERE artist_name = 'GraphicMama-team')),
+('Ron', (SELECT id FROM animal_class WHERE class_name = 'Bird'), (SELECT id FROM family WHERE family_name = 'Swan'), (SELECT id FROM size WHERE size_display = 'medium'), 3, NULL, 2, '*Battle* - If your opponent has fifteen or more small recruits: I get *+2 in sky and water*', '/image/Ron.jpg', (SELECT id FROM artist WHERE artist_name = 'JohannaIris')),
+('Tula', (SELECT id FROM animal_class WHERE class_name = 'Bird'), (SELECT id FROM family WHERE family_name = 'Hawk'), (SELECT id FROM size WHERE size_display = 'medium'), 2, 2, NULL, 'I show you enemy *S* recruit sizes', '/image/Tula.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
+('Alpha', (SELECT id FROM animal_class WHERE class_name = 'Mammal'), (SELECT id FROM family WHERE family_name = 'Wolf'), (SELECT id FROM size WHERE size_display = 'medium'), NULL, 3, NULL, '*Recruit* - If I was the only card in the pile: *+3 in Land*', '/image/Alpha.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
+('Bolt', (SELECT id FROM animal_class WHERE class_name = 'Mammal'), (SELECT id FROM family WHERE family_name = 'Squirrel'), (SELECT id FROM size WHERE size_display = 'small'), 2, 3, NULL, NULL, '/image/Bolt.jpg', (SELECT id FROM artist WHERE artist_name = 'JohannaIris')),
+('Wayne', (SELECT id FROM animal_class WHERE class_name = 'Mammal'), (SELECT id FROM family WHERE family_name = 'Bat'), (SELECT id FROM size WHERE size_display = 'small'), 2, 1, NULL, '*Recruit* - If I was recruited off the top of the deck: Recruit four Bat friends', '/image/Wayne.jpg', (SELECT id FROM artist WHERE artist_name = 'JohannaIris')),
+('Ellie', (SELECT id FROM animal_class WHERE class_name = 'Mammal'), (SELECT id FROM family WHERE family_name = 'Elephant'), (SELECT id FROM size WHERE size_display = 'medium'), NULL, 8, NULL, '*Location* - I get *-1 in land* for each large enemy in *D*', '/image/Ellie.png', (SELECT id FROM artist WHERE artist_name = 'GraphicMama-team')),
+('Bessie', (SELECT id FROM animal_class WHERE class_name = 'Mammal'), (SELECT id FROM family WHERE family_name = 'Cow'), (SELECT id FROM size WHERE size_display = 'large'), NULL, 1, NULL, '*Eaten* - I give an additional *+2 in Land*', '/image/Bessie.png', (SELECT id FROM artist WHERE artist_name = 'Saytress')),
+('Marlin', (SELECT id FROM animal_class WHERE class_name = 'Fish'), (SELECT id FROM family WHERE family_name = 'Clownfish'), (SELECT id FROM size WHERE size_display = 'small'), NULL, 2, NULL, '*Recruit* - Recruit a Clown Fish friend', '/image/Marlin.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
+('Gladius', (SELECT id FROM animal_class WHERE class_name = 'Fish'), (SELECT id FROM family WHERE family_name = 'Swordfish'), (SELECT id FROM size WHERE size_display = 'large'), NULL, 3, NULL, '*Recruit* - You may recruit me into a location with a Human: I get *6 value* in that location', '/image/Gladius.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
+('Bruce', (SELECT id FROM animal_class WHERE class_name = 'Fish'), (SELECT id FROM family WHERE family_name = 'Shark'), (SELECT id FROM size WHERE size_display = 'large'), NULL, 3, NULL, '*Recruit* - Eat any amount of *F*: I get *+1 in water* for each recruit eaten', '/image/Bruce.png', (SELECT id FROM artist WHERE artist_name = 'GraphicMama-team')),
+('Manny', (SELECT id FROM animal_class WHERE class_name = 'Fish'), (SELECT id FROM family WHERE family_name = 'Shark'), (SELECT id FROM size WHERE size_display = 'large'), NULL, 2, NULL, '*Location* - I get *+1 in Water* for each *Large* recruit', '/image/Manny.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
+('Aiden', (SELECT id FROM animal_class WHERE class_name = 'Fish'), (SELECT id FROM family WHERE family_name = 'Sardine'), (SELECT id FROM size WHERE size_display = 'small'), NULL, 1, NULL, '*Recruit* - Recruit a Sardine friend of me for each sardine recruit', '/image/Aiden.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
+('Gill', (SELECT id FROM animal_class WHERE class_name = 'Fish'), (SELECT id FROM family WHERE family_name = 'Moorish Idol'), (SELECT id FROM size WHERE size_display = 'small'), -2, NULL, NULL, '*Battle* - I get *+1 in water* for each enemy fish', '/image/Gill.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
+('Annie', (SELECT id FROM animal_class WHERE class_name = 'Amphibian'), (SELECT id FROM family WHERE family_name = 'Frog'), (SELECT id FROM size WHERE size_display = 'small'), 8, NULL, NULL, '*Eaten* - *-2 in Land* instead. I get *-1 in Land* for each large recruit you have', '/image/Annie.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
+('Emily', (SELECT id FROM animal_class WHERE class_name = 'Amphibian'), (SELECT id FROM family WHERE family_name = 'Frog'), (SELECT id FROM size WHERE size_display = 'small'), -6, -6, NULL, '*Recruit* - Take an extra turn after this one', '/image/Emily.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
+('Ally', (SELECT id FROM animal_class WHERE class_name = 'Reptile'), (SELECT id FROM family WHERE family_name = 'Crocodile'), (SELECT id FROM size WHERE size_display = 'medium'), 2, 3, NULL, NULL, '/image/Ally.png', (SELECT id FROM artist WHERE artist_name = 'GraphicMama-team')),
+('Joe', (SELECT id FROM animal_class WHERE class_name = 'Reptile'), (SELECT id FROM family WHERE family_name = 'Iguana'), (SELECT id FROM size WHERE size_display = 'medium'), 2, 2, NULL, '*Recruit* - Recruit two Log friends', '/image/Joe.png', (SELECT id FROM artist WHERE artist_name = 'GraphicMama-team')),
+('Logan', (SELECT id FROM animal_class WHERE class_name = 'Plant'), (SELECT id FROM family WHERE family_name = 'Log'), (SELECT id FROM size WHERE size_display = 'large'), 0, 0, NULL, NULL, '/image/Logan.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36'));
