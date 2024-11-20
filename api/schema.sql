@@ -1,3 +1,5 @@
+-- psql -U <username> -d <database_name>
+
 DROP TRIGGER IF EXISTS trigger_delete_game_card_if_any_null ON game_card;
 DROP FUNCTION IF EXISTS delete_game_card_if_any_null;
 
@@ -41,7 +43,7 @@ CREATE TABLE md_user (
   notifications BOOLEAN NOT NULL DEFAULT FALSE,
   user_color_id INTEGER,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY user_color_id REFERENCES user_color(id) ON DELETE SET NULL
+  FOREIGN KEY (user_color_id) REFERENCES user_color(id) ON DELETE SET NULL
 );
 
 CREATE TABLE artist (
@@ -73,7 +75,7 @@ CREATE TABLE card (
   air_value TEXT,
   land_value INTEGER,
   water_value INTEGER,
-  text_box INTEGER,
+  text_box TEXT,
   img_url TEXT,
   artist_id INTEGER,
   FOREIGN KEY (animal_class_id) REFERENCES animal_class(id),
@@ -94,7 +96,7 @@ CREATE TABLE card_zone (
   id SERIAL PRIMARY KEY,
   card_zone_value TEXT,
   player_ids_hand INTEGER,
-  FOREIGN KEY player_ids_hand REFERENCES md_user(id) ON DELETE SET NULL
+  FOREIGN KEY (player_ids_hand) REFERENCES md_user(id) ON DELETE SET NULL
 );
 
 CREATE TABLE override (
@@ -109,9 +111,9 @@ CREATE TABLE game (
   join_code VARCHAR(5),
   players_turn_id INTEGER,
   other_player_id INTEGER,
-  FOREIGN KEY players_turn_id REFERENCES md_user(id) ON DELETE SET NULL,
-  FOREIGN KEY other_player_id REFERENCES md_user(id) ON DELETE SET NULL,
-  FOREIGN KEY winner_id REFERENCES md_user(id) ON DELETE SET NULL
+  FOREIGN KEY (players_turn_id) REFERENCES md_user(id) ON DELETE SET NULL,
+  FOREIGN KEY (other_player_id) REFERENCES md_user(id) ON DELETE SET NULL,
+  FOREIGN KEY (winner_id) REFERENCES md_user(id) ON DELETE SET NULL
 );
 
 CREATE TABLE game_card (
@@ -119,9 +121,9 @@ CREATE TABLE game_card (
   game_id INTEGER NOT NULL,
   card_id INTEGER NOT NULL,
   card_zone_id INTEGER NOT NULL,
-  FOREIGN KEY game_id REFERENCES game(id),
-  FOREIGN KEY card_id REFERENCES card(id),
-  FOREIGN KEY card_zone_id REFERENCES card_zone(id)
+  FOREIGN KEY (game_id) REFERENCES game(id),
+  FOREIGN KEY (card_id) REFERENCES card(id),
+  FOREIGN KEY (card_zone_id) REFERENCES card_zone(id)
 );
 
 CREATE TABLE game_overrides (
@@ -130,9 +132,9 @@ CREATE TABLE game_overrides (
   card_id INTEGER NOT NULL,
   override_id INTEGER NOT NULL,
   actual_value TEXT NOT NULL,
-  FOREIGN KEY game_id REFERENCES game(id),
-  FOREIGN KEY card_id REFERENCES card(id),
-  FOREIGN KEY override_id REFERENCES override(id)
+  FOREIGN KEY (game_id) REFERENCES game(id),
+  FOREIGN KEY (card_id) REFERENCES card(id),
+  FOREIGN KEY (override_id) REFERENCES override(id)
 );
 
 -- If either the card, game, or card_zone is null, delete the row
@@ -230,17 +232,27 @@ EXECUTE FUNCTION update_img_url_when_artist_id_null();
 
 INSERT INTO user_color (hex_value) VALUES ('#41EAD4');
 
-ALTER TABLE md_user
-  ALTER COLUMN user_color_id SET DEFAULT (SELECT id FROM user_color WHERE hex_value = '#41EAD4');
+-- Set the teal to be the default
+DO $$
+DECLARE
+    color_id INTEGER;
+BEGIN
+    SELECT id INTO color_id
+    FROM user_color
+    WHERE hex_value = '#41EAD4';
 
-INSERT INTO md_user (username, user_color_id) VALUES ('benson', (SELECT id FROM user_color WHERE hex_value = '#41EAD4'));
+    EXECUTE 'ALTER TABLE md_user ALTER COLUMN user_color_id SET DEFAULT ' || color_id;
+END;
+$$;
+
+INSERT INTO md_user (username) VALUES ('benson');
 
 INSERT INTO artist (artist_name) VALUES 
   ('Benson Bird'), 
   ('Saytress'), 
   ('GraphicMama-team'), 
   ('JohannaIris'), 
-  ('MostafaEITurkey36');
+  ('MostafaElTurkey36');
 
 INSERT INTO animal_class (class_name) VALUES 
   ('Mythical'),
@@ -305,9 +317,9 @@ INSERT INTO card_zone (card_zone_value) VALUES
 -- all three location values
 INSERT INTO card (card_name, animal_class_id, family_id, size_id, air_value, land_value, water_value, text_box, img_url, artist_id) 
 VALUES ('Blackjack', (SELECT id FROM animal_class WHERE class_name = 'Mythical'), (SELECT id FROM family WHERE family_name = 'Pegasus'), (SELECT id FROM size WHERE size_display = 'medium'), 6, 2, 2, 'Double any amount of recruit friends you get', '/image/Blackjack.png', (SELECT id FROM artist WHERE artist_name = 'Saytress')),
-('Charybdis', (SELECT id FROM animal_class WHERE class_name = 'Mythical'), (SELECT id FROM family WHERE family_name = 'Whirlpool'), (SELECT id FROM size WHERE size_display = 'large'), 1, NULL, 8, '*Eat & Recruiting* - do the same to the top of the deck', '/image/Charybdis.png', (SELECT id FROM artist WHERE artist_name = 'Benson Bird'));
+('Charybdis', (SELECT id FROM animal_class WHERE class_name = 'Mythical'), (SELECT id FROM family WHERE family_name = 'Whirlpool'), (SELECT id FROM size WHERE size_display = 'large'), 1, NULL, 8, '*Eat & Recruiting* - do the same to the top of the deck', '/image/Charybdis.png', (SELECT id FROM artist WHERE artist_name = 'Benson Bird')),
 ('Phil', (SELECT id FROM animal_class WHERE class_name = 'Mythical'), (SELECT id FROM family WHERE family_name = 'Phoenix'), (SELECT id FROM size WHERE size_display = 'large'), 6, 1, 2, '*Eat* - Create a friendly ash token that has value zero in land, but the same text box', '/image/Phil.png', (SELECT id FROM artist WHERE artist_name = 'JohannaIris')),
-('Zoom', (SELECT id FROM animal_class WHERE class_name = 'Bird'), (SELECT id FROM family WHERE family_name = 'Humming Bird'), (SELECT id FROM size WHERE size_display = 'medium'), 3, 2, NULL, '/image/Zoom.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
+('Zoom', (SELECT id FROM animal_class WHERE class_name = 'Bird'), (SELECT id FROM family WHERE family_name = 'Humming Bird'), (SELECT id FROM size WHERE size_display = 'medium'), 3, 2, NULL, NULL, '/image/Zoom.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
 ('Deanna', (SELECT id FROM animal_class WHERE class_name = 'Bird'), (SELECT id FROM family WHERE family_name = 'Parrot'), (SELECT id FROM size WHERE size_display = 'small'), 2, 2, NULL, '*Battle* - I gain a random enemy''s text box', '/image/Deanna.png', (SELECT id FROM artist WHERE artist_name = 'Saytress')),
 ('Draco', (SELECT id FROM animal_class WHERE class_name = 'Mythical'), (SELECT id FROM family WHERE family_name = 'Dragon'), (SELECT id FROM size WHERE size_display = 'large'), 8, 3, NULL, 'If I has a total higher value than your opposing''s *M* total value Double all your buffs', '/image/Draco.png', (SELECT id FROM artist WHERE artist_name = 'GraphicMama-team')),
 ('Ron', (SELECT id FROM animal_class WHERE class_name = 'Bird'), (SELECT id FROM family WHERE family_name = 'Swan'), (SELECT id FROM size WHERE size_display = 'medium'), 3, NULL, 2, '*Battle* - If your opponent has fifteen or more small recruits: I get *+2 in sky and water*', '/image/Ron.jpg', (SELECT id FROM artist WHERE artist_name = 'JohannaIris')),
