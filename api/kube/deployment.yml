@@ -22,11 +22,9 @@ spec:
         - name: init-seed-images
           image: ${DOCKERHUB_USERNAME}/mythical_inventory_images:4
           command:
-            [
-              "sh",
-              "-c",
-              'if [ -z "$(ls -A /app/images)" ]; then cp -r /seededImages/* /app/images/; fi',
-            ]
+            - sh
+            - -c
+            - "rm -rf /app/images/* && cp -r /seededImages/* /app/images/"
           volumeMounts:
             - name: images-storage
               mountPath: /app/images
