@@ -1,0 +1,21 @@
+services:
+  mythical_db:
+    container_name: mythical_db
+    image: postgres
+    environment:
+      POSTGRES_USER: mythpostgres
+      POSTGRES_PASSWORD: mythpassword
+      POSTGRES_DB: mythdb
+    ports:
+      - 2345:5432
+    volumes:
+      - mythdata:/var/lib/postgresql/data
+      - ./api/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mythpostgres -d mythdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mythdata:

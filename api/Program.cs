@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using api.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api;
@@ -19,7 +20,7 @@ public class Program
         builder.Services.AddCors();
 
         string dbConfigString = string.Format("Host={0};Database={1};Username={2};password={3};Port={4}", builder.Configuration["PG_HOST"], builder.Configuration["PG_DB"], builder.Configuration["PG_USER"], builder.Configuration["PG_PASSWORD"], builder.Configuration["PG_PORT"] ?? "5432");
-        builder.Services.AddDbContext<DbContext>(options =>
+        builder.Services.AddDbContext<MythicalDbContext>(options =>
             options.UseNpgsql(dbConfigString));
 
         // https://www.infoworld.com/article/2336284/how-to-implement-jwt-authentication-in-aspnet-core.html
