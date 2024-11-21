@@ -42,32 +42,38 @@ It is only a two player game.
     - [x] Routing
     - [x] Tanstack Query Hooks
     - [x] Axios access
+- [x] Nov 16
+- [x] Nov 20
+  - [x] You can now see all the cards on the client
+  - [x] The images work locally
+  - [x] There are objects for the cards
+  - [x] There is communication between the api and db now
 
 # Actual Rubric
 
 # Goals by Week (Rubric)
 
-|                      | Nov 6      | Nov 9      | Nov 13     | Nov 16 | Nov 20 | Nov 23 | Nov 26 | Dec 4 |
-| -------------------- | ---------- | ---------- | ---------- | ------ | ------ | ------ | ------ | ----- |
-| Scope                | 5/30       | 5/30       | 5/30       |        |        |        |        |       |
-| Local Storage        | 0/5        | 0/5        | 0/5        |        |        |        |        |       |
-| Tanstack Query       | 0/5        | 0/5        | 5/5        |        |        |        |        |       |
-| Toasts               | 0/5        | 0/5        | 0/5        |        |        |        |        |       |
-| Error Handling       | 0/5        | 0/5        | 0/5        |        |        |        |        |       |
-| CRUD Calls           | 0/5        | 0/5        | 0/5        |        |        |        |        |       |
-| Typescript           | 5/5        | 5/5        | 5/5        |        |        |        |        |       |
-| 10+ Pages            | 0/5        | 0/5        | 1/5        |        |        |        |        |       |
-| CI / CD              | 5/5        | 5/5        | 5/5        |        |        |        |        |       |
-| CD Relies on Tests   | 0/5        | 0/5        | 5/5        |        |        |        |        |       |
-| 3+ Generic Forms     | 0/9        | 0/9        | 0/9        |        |        |        |        |       |
-| 4+ Generic Layout    | 0/12       | 0/12       | 0/12       |        |        |        |        |       |
-| Auth & User Account  | 5/10       | 10/10      | 10/10      |        |        |        |        |       |
-| Auth & Public Pages  | 5/5        | 5/5        | 5/5        |        |        |        |        |       |
-| Mobile               | 5/5        | 5/5        | 5/5        |        |        |        |        |       |
-| 3 Mobile _Redesigns_ | 0/5        | 0/5        | 0/5        |        |        |        |        |       |
-| Professional         | 20/20      | 20/20      | 20/20      |        |        |        |        |       |
-| **Total**            | **50/141** | **55/141** | **66/141** |        |        |        |        |       |
-| **∆**                | **50**     | **5**      | **11**     |        |        |        |        |       |
+|                      | Nov 6      | Nov 9      | Nov 13     | Nov 16     | Nov 20     | Nov 23 | Nov 26 | Dec 4 |
+| -------------------- | ---------- | ---------- | ---------- | ---------- | ---------- | ------ | ------ | ----- |
+| Scope                | 5/30       | 5/30       | 5/30       | 5/30       | 15/30      |        |        |       |
+| Local Storage        | 0/5        | 0/5        | 0/5        | 0/5        | 0/5        |        |        |       |
+| Tanstack Query       | 0/5        | 0/5        | 5/5        | 5/5        | 5/5        |        |        |       |
+| Toasts               | 0/5        | 0/5        | 0/5        | 0/5        | 0/5        |        |        |       |
+| Error Handling       | 0/5        | 0/5        | 0/5        | 0/5        | 5/5        |        |        |       |
+| CRUD Calls           | 0/5        | 0/5        | 0/5        | 0/5        | 1/5        |        |        |       |
+| Typescript           | 5/5        | 5/5        | 5/5        | 5/5        | 5/5        |        |        |       |
+| 10+ Pages            | 0/5        | 0/5        | 1/5        | 1/5        | 2/5        |        |        |       |
+| CI / CD              | 5/5        | 5/5        | 5/5        | 5/5        | 5/5        |        |        |       |
+| CD Relies on Tests   | 0/5        | 0/5        | 5/5        | 5/5        | 5/5        |        |        |       |
+| 3+ Generic Forms     | 0/9        | 0/9        | 0/9        | 0/9        | 0/9        |        |        |       |
+| 4+ Generic Layout    | 0/12       | 0/12       | 0/12       | 0/12       | 0/12       |        |        |       |
+| Auth & User Account  | 5/10       | 10/10      | 10/10      | 10/10      | 10/10      |        |        |       |
+| Auth & Public Pages  | 5/5        | 5/5        | 5/5        | 5/5        | 5/5        |        |        |       |
+| Mobile               | 5/5        | 5/5        | 5/5        | 5/5        | 5/5        |        |        |       |
+| 3 Mobile _Redesigns_ | 0/5        | 0/5        | 0/5        | 0/5        | 0/5        |        |        |       |
+| Professional         | 20/20      | 20/20      | 20/20      | 20/20      | 20/20      |        |        |       |
+| **Total**            | **50/141** | **55/141** | **66/141** | **66/141** | **83/141** |        |        |       |
+| **∆**                | **50**     | **5**      | **11**     | **0**      | **17**     |        |        |       |
 
 # Goals by Week (Feature)
 
@@ -133,13 +139,13 @@ It is only a two player game.
 
 - Can Log in
 - Can change their users 'colors'
-- Can see their prevous game stats
+- Can see their previous game stats
 - Can make a game room that others can join
 - Can join a game room that others made
 
 ## Game Play
 
-- There are about 30 diffrent Mythical Creatures that are functional
+- There are about 30 different Mythical Creatures that are functional
 - The Users get to pick one out of three random ones
 - Two Players can't have the same Mythical Creature
 - The game starts with ~80 (maybe 60) cards in the starting deck
