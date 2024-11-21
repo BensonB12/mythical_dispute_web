@@ -255,6 +255,8 @@ INSERT INTO artist (artist_name) VALUES
   ('MostafaElTurkey36');
 
 INSERT INTO animal_class (class_name) VALUES 
+  ('All'),
+  ('Any'),
   ('Mythical'),
   ('Mammal'), 
   ('Bird'), 
@@ -264,6 +266,8 @@ INSERT INTO animal_class (class_name) VALUES
   ('Plant');
 
 INSERT INTO family (family_name) VALUES 
+  ('All'),
+  ('Any'),
   ('Whirlpool'), 
   ('Pegasus'), 
   ('Dragon'), 
