@@ -297,10 +297,6 @@ INSERT INTO size (size_display) VALUES
   ('medium'), 
   ('large');
 
-INSERT INTO card (card_name, animal_class_id, family_id, size_id, air_value, land_value, water_value, text_box, img_url, artist_id) 
-VALUES 
-  ('Eagle', 2, 1, 3, 'high', 10, 5, 1, 'http://example.com/eagle.jpg', 1);
-
 INSERT INTO location (location_name) VALUES 
   ('All'),
   ('Any'),
