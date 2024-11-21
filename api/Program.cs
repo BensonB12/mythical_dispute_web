@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using api.Models;
 using Microsoft.EntityFrameworkCore;
+using DotNetEnv;
 
 namespace Api;
 
@@ -8,6 +9,8 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        Env.Load();
+
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllers()
@@ -17,7 +20,28 @@ public class Program
                 options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             });
 
-        builder.Services.AddCors();
+        builder.Services.AddCors(o =>
+        {
+            o.AddPolicy("AllowDevClient", policy =>
+            {
+                policy.WithOrigins(
+                    "http://localhost:5173"
+                )
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
+            });
+
+            o.AddPolicy("AllowProdClient", p =>
+            {
+                p.WithOrigins(
+                    "https://mythical-dispute.duckdns.org",
+                    "http://mythical-dispute.duckdns.org"
+                ).AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+            });
+        });
+
+        Console.WriteLine("HOST" + Environment.GetEnvironmentVariable("PG_HOST"));
 
         string dbConfigString = string.Format("Host={0};Database={1};Username={2};password={3};Port={4}", Environment.GetEnvironmentVariable("PG_HOST"), Environment.GetEnvironmentVariable("PG_DB"), Environment.GetEnvironmentVariable("PG_USER"), Environment.GetEnvironmentVariable("PG_PASSWORD"), Environment.GetEnvironmentVariable("PG_PORT") ?? "5432");
         builder.Services.AddDbContext<MythicalDbContext>(options =>
@@ -50,15 +74,9 @@ public class Program
 
         app.Logger.LogInformation("The API app has started");
 
-        app.UseCors(c =>
-                c.AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowAnyOrigin()
-            );
+        app.UseCors(app.Environment.IsDevelopment() ? "AllowDevClient" : "AllowProdClient");
 
         string pathToImages = Environment.GetEnvironmentVariable("PATH_TO_IMAGES") ?? "/app/images";
-
-        Console.WriteLine(pathToImages);
 
         if (!Directory.Exists(pathToImages))
         {
