@@ -13,12 +13,7 @@ public class Program
 
         var builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.AddControllers()
-            .AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-                options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-            });
+        builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
         builder.Services.AddCors(o =>
         {
@@ -40,8 +35,6 @@ public class Program
                 ).AllowAnyMethod().AllowAnyHeader().AllowCredentials();
             });
         });
-
-        Console.WriteLine("HOST" + Environment.GetEnvironmentVariable("PG_HOST"));
 
         string dbConfigString = string.Format("Host={0};Database={1};Username={2};password={3};Port={4}", Environment.GetEnvironmentVariable("PG_HOST"), Environment.GetEnvironmentVariable("PG_DB"), Environment.GetEnvironmentVariable("PG_USER"), Environment.GetEnvironmentVariable("PG_PASSWORD"), Environment.GetEnvironmentVariable("PG_PORT") ?? "5432");
         builder.Services.AddDbContext<MythicalDbContext>(options =>
