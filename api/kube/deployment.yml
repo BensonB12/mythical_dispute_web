@@ -45,7 +45,7 @@ spec:
             - name: PG_PORT
               value: "5432"
             - name: PATH_TO_IMAGES
-              value: "app/images"
+              value: "/app/images"
           ports:
             - containerPort: 8080
           readinessProbe:
