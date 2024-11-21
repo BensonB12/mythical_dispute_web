@@ -19,7 +19,7 @@ public class Program
 
         builder.Services.AddCors();
 
-        string dbConfigString = string.Format("Host={0};Database={1};Username={2};password={3};Port={4}", builder.Configuration["PG_HOST"], builder.Configuration["PG_DB"], builder.Configuration["PG_USER"], builder.Configuration["PG_PASSWORD"], builder.Configuration["PG_PORT"] ?? "5432");
+        string dbConfigString = string.Format("Host={0};Database={1};Username={2};password={3};Port={4}", Environment.GetEnvironmentVariable("PG_HOST"), Environment.GetEnvironmentVariable("PG_DB"), Environment.GetEnvironmentVariable("PG_USER"), Environment.GetEnvironmentVariable("PG_PASSWORD"), Environment.GetEnvironmentVariable("PG_PORT") ?? "5432");
         builder.Services.AddDbContext<MythicalDbContext>(options =>
             options.UseNpgsql(dbConfigString));
 
@@ -33,10 +33,10 @@ public class Program
         // {
         //     o.TokenValidationParameters = new TokenValidationParameters
         //     {
-        //         ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        //         ValidAudience = builder.Configuration["Jwt:Audience"],
+        //         ValidIssuer = Environment.GetEnvironmentVariable["Jwt:Issuer"],
+        //         ValidAudience = Environment.GetEnvironmentVariable["Jwt:Audience"],
         //         // IssuerSigningKey = new SymmetricSecurityKey
-        //         // (Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+        //         // (Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable["Jwt:Key"])),
         //         ValidateIssuer = true,
         //         ValidateAudience = true,
         //         ValidateLifetime = false,
@@ -56,7 +56,9 @@ public class Program
                 .AllowAnyOrigin()
             );
 
-        string pathToImages = app.Configuration["PATH_TO_IMAGES"] ?? "/app/images";
+        string pathToImages = Environment.GetEnvironmentVariable("PATH_TO_IMAGES") ?? "/app/images";
+
+        Console.WriteLine(pathToImages);
 
         if (!Directory.Exists(pathToImages))
         {

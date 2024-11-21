@@ -34,16 +34,18 @@ spec:
         - name: mythical-api
           image: ${DOCKERHUB_USERNAME}/mythical_api:${IMAGE_TAG}
           env:
-            - name: POSTGRES_DB
+            - name: PG_DB
               value: ${PG_DB}
-            - name: POSTGRES_USER
+            - name: PG_USER
               value: ${PG_USER}
-            - name: POSTGRES_PASSWORD
+            - name: PG_PASSWORD
               value: ${PG_PASSWORD}
-            - name: POSTGRES_HOST
+            - name: PG_HOST
               value: mythical-db-svc
-            - name: POSTGRES_PORT
+            - name: PG_PORT
               value: "5432"
+            - name: PATH_TO_IMAGES
+              value: "app/images"
           ports:
             - containerPort: 8080
           readinessProbe:
