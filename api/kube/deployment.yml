@@ -23,7 +23,9 @@ spec:
           image: ${DOCKERHUB_USERNAME}/mythical_inventory_images:4
           command:
             [
-              if [ -z "$(ls -A /app/images)" ]; then rm -rf /app/images/* && cp -r /seededImages/* /app/images/ fi
+              "sh",
+              "-c",
+              'if [ -z "$(ls -A /app/images)" ]; then cp -r /seededImages/* /app/images/; fi',
             ]
           volumeMounts:
             - name: images-storage
