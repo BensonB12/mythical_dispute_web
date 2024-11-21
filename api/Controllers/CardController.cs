@@ -1,4 +1,6 @@
+using api.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api.Controllers;
 
@@ -6,10 +8,21 @@ namespace Api.Controllers;
 [ApiController]
 public class CardController : Controller
 {
-    [HttpGet("all")]
-    public ActionResult<IEnumerable<string>> Get()
+    MythicalDbContext _dbContext;
+    public CardController(MythicalDbContext dbContext)
     {
-        IEnumerable<string> cards = ["card1", "card2"];
-        return Ok(cards);
+        _dbContext = dbContext;
+    }
+
+    [HttpGet("all")]
+    public async Task<ActionResult<IEnumerable<string>>> Get()
+    {
+        return Ok(
+            await _dbContext.Cards.Include(c => c.AnimalClass)
+            .Include(c => c.Artist)
+            .Include(c => c.Family)
+            .Include(c => c.Size)
+            .ToListAsync()
+        );
     }
 }

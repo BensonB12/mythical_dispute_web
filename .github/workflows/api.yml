@@ -30,7 +30,7 @@ jobs:
 
       - name: Run .NET Linter (e.g., dotnet format)
         run: |
-          dotnet format ./api --verify-no-changes --severity warn
+          dotnet format mythical_dispute_web.sln --verify-no-changes --severity warn
         continue-on-error: false
 
       - name: Run tests
