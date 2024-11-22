@@ -3,7 +3,7 @@ export enum AnimalClass {
   MYTHICAL = "Mythical",
   BIRD = "Bird",
   REPTILE = "Reptile",
-  WOOD = "Wood",
+  PLANT = "Plant",
   MAMMAL = "Mammal",
   AMPHIBIAN = "Amphibian",
   ALL = "All",
