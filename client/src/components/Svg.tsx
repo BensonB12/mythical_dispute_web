@@ -10,7 +10,7 @@ export const Svg: FC<{ src: string }> = ({ src }) => {
         .split(".")
         .slice(-2, -1)[0]
         .replace(/[_-]/g, " ")}`}
-      height={50}
+      height={60}
     />
   );
 };

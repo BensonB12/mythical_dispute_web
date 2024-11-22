@@ -14,10 +14,10 @@ export const ValuedLocationLogo: FC<{ location: Location; value: number }> = ({
       </div>
       <div
         className="d-flex align-items-center justify-content-center"
-        style={{ width: "50px", height: "50px" }}
+        style={{ width: "60px", height: "60px" }}
       >
         <div
-          className={`${font.irish_grover} my-auto h3 ${
+          className={`${font.irish_grover} my-auto h2 ${
             location === Location.AIR ? "" : "text-light"
           }`}
           style={{ textShadow: "#000 1px 1px 10px" }}

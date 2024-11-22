@@ -7,7 +7,6 @@ export const Home = () => {
       <LoadingAndErrorHandling>
         <AllCards />
       </LoadingAndErrorHandling>
-      <div>This is benson's app</div>
     </>
   );
 };
