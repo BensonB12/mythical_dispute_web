@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Card } from "../models/card";
 import { AnimalClassLogo } from "../components/AnimalClassLogo";
+import { ValuedLocationLogo } from "../components/ValuedLocationLogo";
+import { Location } from "../models/location";
 
 export const AnimalCard: FC<{ card: Card }> = ({ card }) => {
   return (
@@ -22,16 +24,31 @@ export const AnimalCard: FC<{ card: Card }> = ({ card }) => {
             </div>
           </div>
           <div className="row">
-            <div>{card.airValue}</div>
+            {card.airValue && (
+              <ValuedLocationLogo
+                location={Location.AIR}
+                value={card.airValue}
+              />
+            )}
           </div>
         </div>
         <div className="row">
           <div className="col">
             <div className="row">
-              <div>{card.landValue}</div>
+              {card.landValue && (
+                <ValuedLocationLogo
+                  location={Location.LAND}
+                  value={card.landValue}
+                />
+              )}
             </div>
             <div className="row">
-              <div>{card.waterValue}</div>
+              {card.waterValue && (
+                <ValuedLocationLogo
+                  location={Location.WATER}
+                  value={card.waterValue}
+                />
+              )}
             </div>
           </div>
           <div className="col">
