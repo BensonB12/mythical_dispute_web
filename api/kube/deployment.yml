@@ -46,6 +46,8 @@ spec:
               value: "5432"
             - name: PATH_TO_IMAGES
               value: "/app/images"
+            - name: ALLOW_LOCALHOST
+              value: "false"
           ports:
             - containerPort: 8080
           readinessProbe:

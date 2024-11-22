@@ -17,5 +17,40 @@ services:
       timeout: 5s
       retries: 5
 
+  init_seed_images:
+    image: benson002/mythical_inventory_images:4
+    command: >
+      sh -c '
+      if [ -z "$(ls -A /app/images)" ]; then
+        cp -r /seededImages/* /app/images/;
+      fi
+      '
+    volumes:
+      - images:/app/images
+    depends_on:
+      - mythical_db
+    restart: "no"
+
+  mythical_api:
+    container_name: mythical_api
+    build:
+      context: ./api
+    environment:
+      - PG_HOST=mythical_db
+      - PG_DB=mythdb
+      - PG_USER=mythpostgres
+      - PG_PASSWORD=mythpassword
+      - PG_PORT=5432
+      - PATH_TO_IMAGES=/app/images
+      - ALLOW_LOCALHOST=true
+    volumes:
+      - images:/app/images
+    ports:
+      - 5213:8080
+    depends_on:
+      - mythical_db
+      - init_seed_images
+
 volumes:
   mythdata:
+  images:

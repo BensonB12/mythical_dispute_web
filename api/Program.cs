@@ -67,7 +67,7 @@ public class Program
 
         app.Logger.LogInformation("The API app has started");
 
-        app.UseCors(app.Environment.IsDevelopment() ? "AllowDevClient" : "AllowProdClient");
+        app.UseCors(Environment.GetEnvironmentVariable("ALLOW_LOCALHOST") == "true" ? "AllowDevClient" : "AllowProdClient");
 
         string pathToImages = Environment.GetEnvironmentVariable("PATH_TO_IMAGES") ?? "/app/images";
 
