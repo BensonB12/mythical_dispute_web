@@ -20,7 +20,7 @@ spec:
     spec:
       initContainers:
         - name: init-seed-images
-          image: ${DOCKERHUB_USERNAME}/mythical_inventory_images:4
+          image: ${DOCKERHUB_USERNAME}/mythical_inventory_images:6
           command:
             [
               "sh",

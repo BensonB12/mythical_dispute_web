@@ -292,6 +292,8 @@ INSERT INTO family (family_name) VALUES
   ('Frog'),
   ('Crocodile'),
   ('Iguana'),
+  ('Whale'),
+  ('Siren'),
   ('Log');
 
 INSERT INTO size (size_display) VALUES 
@@ -339,4 +341,7 @@ VALUES ('Blackjack', (SELECT id FROM animal_class WHERE class_name = 'Mythical')
 ('Emily', (SELECT id FROM animal_class WHERE class_name = 'Amphibian'), (SELECT id FROM family WHERE family_name = 'Frog'), (SELECT id FROM size WHERE size_display = 'small'), -6, -6, NULL, '*Recruit* - Take an extra turn after this one', '/image/Emily.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
 ('Ally', (SELECT id FROM animal_class WHERE class_name = 'Reptile'), (SELECT id FROM family WHERE family_name = 'Crocodile'), (SELECT id FROM size WHERE size_display = 'medium'), 2, 3, NULL, NULL, '/image/Ally.png', (SELECT id FROM artist WHERE artist_name = 'GraphicMama-team')),
 ('Joe', (SELECT id FROM animal_class WHERE class_name = 'Reptile'), (SELECT id FROM family WHERE family_name = 'Iguana'), (SELECT id FROM size WHERE size_display = 'medium'), 2, 2, NULL, '*Recruit* - Recruit two Log friends', '/image/Joe.png', (SELECT id FROM artist WHERE artist_name = 'GraphicMama-team')),
-('Logan', (SELECT id FROM animal_class WHERE class_name = 'Plant'), (SELECT id FROM family WHERE family_name = 'Log'), (SELECT id FROM size WHERE size_display = 'large'), 0, 0, NULL, NULL, '/image/Logan.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36'));
+('Logan', (SELECT id FROM animal_class WHERE class_name = 'Plant'), (SELECT id FROM family WHERE family_name = 'Log'), (SELECT id FROM size WHERE size_display = 'large'), 0, 0, NULL, NULL, '/image/Logan.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
+('Jonah', (SELECT id FROM animal_class WHERE class_name = 'Mammal'), (SELECT id FROM family WHERE family_name = 'Whale'), (SELECT id FROM size WHERE size_display = 'large'), NULL, NULL, 3, 'I get *+1 in Water* for each *L* recruit outside of *D*', 'image/Jonah.png', (SELECT id FROM artist WHERE artist_name = 'MostafaElTurkey36')),
+('Waldo', (SELECT id FROM animal_class WHERE class_name = 'Mythical'), (SELECT id FROM family WHERE family_name = 'Bigfoot'), (SELECT id FROM size WHERE size_display = 'large'), NULL, 8, 4, '*Location* - I count as three large recruits', '/image/Waldo.png', (SELECT id FROM artist WHERE artist_name = 'Benson Bird')),
+('Katelyn', (SELECT id FROM animal_class WHERE class_name = 'Mythical'), (SELECT id FROM family WHERE family_name = 'Siren'), (SELECT id FROM size WHERE size_display = 'medium,'), 3, 2, 5, '*B* get *+1 in the sky*', '/image/Katelyn.png', (SELECT id FROM artist WHERE artist_name = 'Saytress'));
