@@ -5,8 +5,8 @@ metadata:
   name: mythical-img-pvc
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 3Gi
-  storageClassName: local-path
+      storage: 1GB
+  storageClassName: nfs-client
