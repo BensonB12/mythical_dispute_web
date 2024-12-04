@@ -18,7 +18,7 @@ services:
       retries: 5
 
   init_seed_images:
-    image: benson002/mythical_inventory_images:4
+    image: benson002/mythical_inventory_images:latest
     command: >
       sh -c '
       if [ -z "$(ls -A /app/images)" ]; then

@@ -66,6 +66,7 @@ public class Program
         // app.UseHttpsRedirection();
 
         app.Logger.LogInformation("The API app has started");
+        app.Logger.LogInformation($"Allowing Local host: {Environment.GetEnvironmentVariable("ALLOW_LOCALHOST") == "true"}");
 
         app.UseCors(Environment.GetEnvironmentVariable("ALLOW_LOCALHOST") == "true" ? "AllowDevClient" : "AllowProdClient");
 

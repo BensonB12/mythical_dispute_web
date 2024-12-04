@@ -1,10 +1,10 @@
-import { LoginButton } from "./features/auth/LoginButton";
 import { AppRoutes } from "./AppRoutes";
+import { HeadNav } from "./navigation/HeadNav";
 
 export const App = () => {
   return (
     <>
-      <LoginButton />
+      <HeadNav />
       <AppRoutes />
     </>
   );

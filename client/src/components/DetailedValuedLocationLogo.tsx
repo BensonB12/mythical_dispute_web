@@ -1,20 +1,24 @@
-import { Location } from "./../models/location";
+import { Location } from "../models/location";
 import { FC } from "react";
 import { LocationLogo } from "./LocationLogo";
 import font from "./../styles/fonts.module.scss";
 
-export const ValuedLocationLogo: FC<{ location: Location; value: number }> = ({
-  location,
-  value,
-}) => {
+export const DetailedValuedLocationLogo: FC<{
+  location: Location;
+  value: number;
+  isDetailed?: boolean;
+}> = ({ location, value, isDetailed = false }) => {
   return (
     <div>
       <div className="position-absolute z-n1">
-        <LocationLogo location={location} />
+        <LocationLogo location={location} isDetailed={isDetailed} />
       </div>
       <div
         className="d-flex align-items-center justify-content-center"
-        style={{ width: "60px", height: "60px" }}
+        style={{
+          width: isDetailed ? "60px" : "30px",
+          height: isDetailed ? "60px" : "30px",
+        }}
       >
         <div
           className={`${font.irish_grover} my-auto h2 ${

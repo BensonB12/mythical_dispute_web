@@ -9,27 +9,28 @@ import fishLogo from "../assets/fish_logo.svg";
 import { FC } from "react";
 import { Svg } from "./Svg";
 
-export const AnimalClassLogo: FC<{ animalClass: AnimalClass }> = ({
-  animalClass,
-}) => {
+export const AnimalClassLogo: FC<{
+  animalClass: AnimalClass;
+  isDetailed?: boolean;
+}> = ({ animalClass, isDetailed = false }) => {
   switch (animalClass) {
     case AnimalClass.MYTHICAL:
-      return <Svg src={mythicalLogo} />;
+      return <Svg src={mythicalLogo} isDetailed={isDetailed} />;
     case AnimalClass.BIRD:
-      return <Svg src={birdLogo} />;
+      return <Svg src={birdLogo} isDetailed={isDetailed} />;
     case AnimalClass.AMPHIBIAN:
-      return <Svg src={amphibianLogo} />;
+      return <Svg src={amphibianLogo} isDetailed={isDetailed} />;
     case AnimalClass.REPTILE:
-      return <Svg src={reptileLogo} />;
+      return <Svg src={reptileLogo} isDetailed={isDetailed} />;
     case AnimalClass.MAMMAL:
-      return <Svg src={mammalLogo} />;
+      return <Svg src={mammalLogo} isDetailed={isDetailed} />;
     case AnimalClass.FISH:
-      return <Svg src={fishLogo} />;
+      return <Svg src={fishLogo} isDetailed={isDetailed} />;
     case AnimalClass.PLANT:
-      return <Svg src={plantLogo} />;
+      return <Svg src={plantLogo} isDetailed={isDetailed} />;
     case AnimalClass.ALL:
     case AnimalClass.ANY:
     default:
-      return <Svg src={mythicalLogo} />; // TODO: Replace with appropriate SVG for "ALL/ANY" or "default".
+      return <Svg src={mythicalLogo} isDetailed={isDetailed} />; // TODO: Replace with appropriate SVG for "ALL/ANY" or "default".
   }
 };
