@@ -50,6 +50,9 @@ spec:
               value: "false"
           ports:
             - containerPort: 8080
+          volumeMounts:
+            - name: images-storage
+              mountPath: /app/images
           readinessProbe:
             httpGet:
               path: /api/health

@@ -71,12 +71,12 @@ public class Program
 
         string pathToImages = Environment.GetEnvironmentVariable("PATH_TO_IMAGES") ?? "/app/images";
 
-        // if (!Directory.Exists(pathToImages))
-        // {
-        //     app.Logger.LogWarning($"{pathToImages} is not a directory that exists");
-        //     Directory.CreateDirectory(pathToImages);
-        //     app.Logger.LogWarning($"{pathToImages} now exists, we created it from scratch");
-        // }
+        if (!Directory.Exists(pathToImages))
+        {
+            app.Logger.LogWarning($"{pathToImages} is not a directory that exists");
+            Directory.CreateDirectory(pathToImages);
+            app.Logger.LogWarning($"{pathToImages} now exists, we created it from scratch");
+        }
 
         app.UseStaticFiles(new StaticFileOptions
         {
