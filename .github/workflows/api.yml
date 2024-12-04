@@ -59,6 +59,8 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
+          kubectl get namespace benson || kubectl create namespace benson
+
           export PATH=$PATH:~.nix-profile/bin:/nix/var/nix/profiles/default/bin
           export IMAGE_TAG=${{ github.run_number }}
           export DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
@@ -66,7 +68,6 @@ jobs:
           export PG_DB=${{ secrets.PG_DB }}
           export PG_PASSWORD=${{ secrets.PG_PASSWORD }}
 
-          kubectl get namespace benson || kubectl create namespace benson
           kubectl delete configmap postgres-schema --namespace=benson || true
           kubectl create configmap postgres-schema --from-file=api/schema.sql --namespace=benson
 
