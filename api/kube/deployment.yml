@@ -25,7 +25,7 @@ spec:
             [
               "sh",
               "-c",
-              'if [ -z "$(ls -A /app/images)" ]; then cp -r /seededImages/* /app/images/; fi',
+              'echo "Files in /app/images:"; ls -l /app/images; echo "Files in /seededImages:"; ls -l /seededImages; if [ -z "$(ls -A /app/images)" ]; then cp -r /seededImages/* /app/images/; fi; echo "After copying, files in /app/images:"; ls -l /app/images',
             ]
           volumeMounts:
             - name: images-storage
