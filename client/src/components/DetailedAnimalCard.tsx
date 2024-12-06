@@ -25,7 +25,7 @@ export const DetailedAnimalCard: FC<{ card: Card }> = ({ card }) => {
             <div className="bg-light w-100 px-1">
               <div className="d-flex justify-content-between">
                 <div>{card.cardName}</div>
-                <div>{card.family}</div>
+                <div>{card.family}</div> 
               </div>
             </div>
           </div>
