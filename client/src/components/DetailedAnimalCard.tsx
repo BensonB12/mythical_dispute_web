@@ -10,7 +10,7 @@ export const DetailedAnimalCard: FC<{ card: Card }> = ({ card }) => {
     <div className={`${size.w_250} rounded border-3 border position-relative`}>
       <img
         src={import.meta.env.VITE_API_URL + card.imgUrl}
-        alt={`A picture of ${card.cardName} could not be found`}
+        alt={`Pic of ${card.cardName}`}
         className={`${size.mh_mw_250} position-absolute top-50 start-50 translate-middle z-n1`}
       />
 

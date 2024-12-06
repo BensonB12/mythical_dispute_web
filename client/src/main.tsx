@@ -4,7 +4,6 @@ import { App } from "./App.tsx";
 import { AppAuthProvider } from "./features/auth/AppAuthProvider.tsx";
 import { BrowserRouter } from "react-router-dom";
 import "./../custom.scss";
-import "bootstrap";
 import { getQueryClient } from "./utils/queryClient.ts";
 import { QueryClientProvider } from "@tanstack/react-query";
 
