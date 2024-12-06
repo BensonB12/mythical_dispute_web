@@ -3,18 +3,15 @@ import { Card } from "../models/card";
 import { AnimalClassLogo } from "./AnimalClassLogo";
 import { DetailedValuedLocationLogo } from "./DetailedValuedLocationLogo";
 import { Location } from "../models/location";
+import size from "./../styles/sizes.module.scss";
 
 export const DetailedAnimalCard: FC<{ card: Card }> = ({ card }) => {
   return (
-    <div
-      className="rounded border-3 border position-relative"
-      style={{ width: "250px" }}
-    >
+    <div className={`${size.w_250} rounded border-3 border position-relative`}>
       <img
         src={import.meta.env.VITE_API_URL + card.imgUrl}
         alt={`A picture of ${card.cardName} could not be found`}
-        className="position-absolute top-50 start-50 translate-middle z-n1"
-        style={{ maxHeight: "250px", maxWidth: "250px" }}
+        className={`${size.mh_mw_250} position-absolute top-50 start-50 translate-middle z-n1`}
       />
 
       <div className="h-100">
@@ -34,7 +31,7 @@ export const DetailedAnimalCard: FC<{ card: Card }> = ({ card }) => {
 
         <div className="row h-75">
           <div className="col-auto pe-0 d-flex flex-column justify-content-around">
-            <div className="p-0 m-0" style={{ height: "60px", width: "60px" }}>
+            <div className={size.h_w_60}>
               {card.airValue && (
                 <DetailedValuedLocationLogo
                   location={Location.AIR}
@@ -43,7 +40,7 @@ export const DetailedAnimalCard: FC<{ card: Card }> = ({ card }) => {
                 />
               )}
             </div>
-            <div style={{ height: "60px", width: "60px" }}>
+            <div className={size.h_w_60}>
               {card.landValue !== null && (
                 <DetailedValuedLocationLogo
                   location={Location.LAND}
@@ -52,7 +49,7 @@ export const DetailedAnimalCard: FC<{ card: Card }> = ({ card }) => {
                 />
               )}
             </div>
-            <div style={{ height: "60px", width: "60px" }}>
+            <div className={size.h_w_60}>
               {card.waterValue !== null && (
                 <DetailedValuedLocationLogo
                   location={Location.WATER}

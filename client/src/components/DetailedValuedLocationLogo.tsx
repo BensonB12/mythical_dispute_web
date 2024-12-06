@@ -2,6 +2,8 @@ import { Location } from "../models/location";
 import { FC } from "react";
 import { LocationLogo } from "./LocationLogo";
 import font from "./../styles/fonts.module.scss";
+import size from "./../styles/sizes.module.scss";
+import shadow from "./../styles/shadows.module.scss";
 
 export const DetailedValuedLocationLogo: FC<{
   location: Location;
@@ -14,17 +16,14 @@ export const DetailedValuedLocationLogo: FC<{
         <LocationLogo location={location} isDetailed={isDetailed} />
       </div>
       <div
-        className="d-flex align-items-center justify-content-center"
-        style={{
-          width: isDetailed ? "60px" : "30px",
-          height: isDetailed ? "60px" : "30px",
-        }}
+        className={`${
+          isDetailed ? size.h_w_60 : size.h_w_30
+        } d-flex align-items-center justify-content-center`}
       >
         <div
-          className={`${font.irish_grover} my-auto ${
+          className={`${font.irish_grover} ${shadow.text_shadow} my-auto ${
             isDetailed ? "display-3" : ""
           } ${location === Location.AIR ? "" : "text-light"}`}
-          style={{ textShadow: "#000 1px 1px 10px" }}
         >
           {value}
         </div>
