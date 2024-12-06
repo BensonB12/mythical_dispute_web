@@ -7,7 +7,9 @@ import size from "./../styles/sizes.module.scss";
 
 export const DetailedAnimalCard: FC<{ card: Card }> = ({ card }) => {
   return (
-    <div className={`${size.w_250} rounded border-3 border position-relative`}>
+    <div
+      className={`${size.w_250} rounded border-3 bg-light border position-relative z-n1`}
+    >
       <img
         src={import.meta.env.VITE_API_URL + card.imgUrl}
         alt={`Pic of ${card.cardName}`}

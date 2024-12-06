@@ -17,12 +17,12 @@ export const AnimalCard: FC<{ card: Card }> = ({ card }) => {
         data-target={`#${card.id}${card.cardName}`}
       >
         <div
-          className={`${size.w_105} rounded border-3 border position-relative`}
+          className={`${size.w_105} bg-light rounded border-3 border position-relative`}
         >
           <img
             src={import.meta.env.VITE_API_URL + card.imgUrl}
             alt={`Pic of ${card.cardName}`}
-            className={`${size.mh_mw_80} position-absolute top-50 start-50 translate-middle z-n1`}
+            className={`${size.mh_mw_80} position-absolute top-50 start-50 translate-middle z-0`}
           />
 
           <div className="position-absolute top-0 start-100 translate-middle">
