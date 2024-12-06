@@ -1,5 +1,5 @@
 import { useGetCardsQuery } from "../hooks/cardHook";
-import { AnimalCard } from "./AnimalCard";
+import { AnimalCard } from "../components/AnimalCard";
 
 export const AnimalCards = () => {
   const { data: cards } = useGetCardsQuery();

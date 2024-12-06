@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Card } from "../models/card";
-import { AnimalClassLogo } from "../components/AnimalClassLogo";
-import { DetailedValuedLocationLogo } from "../components/DetailedValuedLocationLogo";
+import { AnimalClassLogo } from "./AnimalClassLogo";
+import { DetailedValuedLocationLogo } from "./DetailedValuedLocationLogo";
 import { Location } from "../models/location";
 
 export const DetailedAnimalCard: FC<{ card: Card }> = ({ card }) => {

@@ -1,8 +1,9 @@
 import { FC } from "react";
 import { Card } from "../models/card";
-import { AnimalClassLogo } from "../components/AnimalClassLogo";
-import { DetailedValuedLocationLogo } from "../components/DetailedValuedLocationLogo";
+import { AnimalClassLogo } from "./AnimalClassLogo";
+import { DetailedValuedLocationLogo } from "./DetailedValuedLocationLogo";
 import { Location } from "../models/location";
+import font from "./../styles/fonts.module.scss";
 
 export const AnimalCard: FC<{ card: Card }> = ({ card }) => {
   return (
@@ -12,16 +13,16 @@ export const AnimalCard: FC<{ card: Card }> = ({ card }) => {
     >
       <img
         src={import.meta.env.VITE_API_URL + card.imgUrl}
-        alt={`A picture of ${card.cardName} could not be found`}
+        alt={`Pic of ${card.cardName}`}
         className="position-absolute top-50 start-50 translate-middle z-n1"
-        style={{ maxHeight: "105px", maxWidth: "105px" }}
+        style={{ maxHeight: "80px", maxWidth: "80px" }}
       />
 
       <div className="position-absolute top-0 start-100 translate-middle">
         <AnimalClassLogo animalClass={card.animalClass} />
       </div>
 
-      <div className="ps-2 bg-light">{card.cardName}</div>
+      <div className="ps-2">{card.cardName}</div>
 
       <div
         className="position-relative top-0 start-0 translate-middle-x"
@@ -58,7 +59,9 @@ export const AnimalCard: FC<{ card: Card }> = ({ card }) => {
       </div>
 
       <div className="position-absolute top-100 start-100 translate-middle">
-        <div className="me-3 mb-3 rounded">{card.size[0].toUpperCase()}</div>
+        <div className={`me-3 mb-3 rounded small ${font.irish_grover}`}>
+          {card.size[0].toUpperCase()}
+        </div>
       </div>
     </div>
   );
