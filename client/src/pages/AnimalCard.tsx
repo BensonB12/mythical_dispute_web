@@ -17,55 +17,48 @@ export const AnimalCard: FC<{ card: Card }> = ({ card }) => {
         style={{ maxHeight: "105px", maxWidth: "105px" }}
       />
 
-      <div className="h-100">
-        <div className="row h-25">
-          <div className="col-auto pe-0">
-            <AnimalClassLogo animalClass={card.animalClass} />
-          </div>
-          <div className="col ps-0">
-            <div className="bg-light w-100 px-1">
-              <div className="d-flex justify-content-between">
-                <div>{card.cardName}</div>
-                <div>{card.family}</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="position-absolute top-0 start-100 translate-middle">
+        <AnimalClassLogo animalClass={card.animalClass} />
+      </div>
 
-        <div className="row h-75">
-          <div className="col-auto pe-0 d-flex flex-column justify-content-around">
-            <div className="p-0 m-0" style={{ height: "30px", width: "30px" }}>
-              {card.airValue && (
-                <DetailedValuedLocationLogo
-                  location={Location.AIR}
-                  value={card.airValue}
-                />
-              )}
-            </div>
-            <div style={{ height: "30px", width: "30px" }}>
-              {card.landValue !== null && (
-                <DetailedValuedLocationLogo
-                  location={Location.LAND}
-                  value={card.landValue ?? 0}
-                />
-              )}
-            </div>
-            <div style={{ height: "30px", width: "30px" }}>
-              {card.waterValue !== null && (
-                <DetailedValuedLocationLogo
-                  location={Location.WATER}
-                  value={card.waterValue ?? 0}
-                />
-              )}
-            </div>
-          </div>
+      <div className="ps-2 bg-light">{card.cardName}</div>
 
-          <div className="col ps-0 d-flex flex-column align-items-end">
-            <div className="w-100 mt-auto d-flex justify-content-between bg-dark small text-light">
-              <div className="pe-1">{card.size}</div>
-            </div>
-          </div>
-        </div>
+      <div
+        className="position-relative top-0 start-0 translate-middle-x"
+        style={{ height: "30px", width: "30px" }}
+      >
+        {card.airValue && (
+          <DetailedValuedLocationLogo
+            location={Location.AIR}
+            value={card.airValue}
+          />
+        )}
+      </div>
+      <div
+        className="position-relative top-0 start-0 translate-middle-x"
+        style={{ height: "30px", width: "30px" }}
+      >
+        {card.landValue !== null && (
+          <DetailedValuedLocationLogo
+            location={Location.LAND}
+            value={card.landValue ?? 0}
+          />
+        )}
+      </div>
+      <div
+        className="position-relative top-0 start-0 translate-middle-x"
+        style={{ height: "30px", width: "30px" }}
+      >
+        {card.waterValue !== null && (
+          <DetailedValuedLocationLogo
+            location={Location.WATER}
+            value={card.waterValue ?? 0}
+          />
+        )}
+      </div>
+
+      <div className="position-absolute top-100 start-100 translate-middle">
+        <div className="me-3 mb-3 rounded">{card.size[0].toUpperCase()}</div>
       </div>
     </div>
   );

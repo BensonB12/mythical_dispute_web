@@ -21,9 +21,9 @@ export const DetailedValuedLocationLogo: FC<{
         }}
       >
         <div
-          className={`${font.irish_grover} my-auto h2 ${
-            location === Location.AIR ? "" : "text-light"
-          }`}
+          className={`${font.irish_grover} my-auto ${
+            isDetailed ? "display-3" : ""
+          } ${location === Location.AIR ? "" : "text-light"}`}
           style={{ textShadow: "#000 1px 1px 10px" }}
         >
           {value}
