@@ -4,19 +4,21 @@
 @import url("https://fonts.googleapis.com/css?family=Crimson Text");
 $font-family-base: "Crimson Text";
 
-$primary: #962910;
-$info: #1cd13a;
-$success: #20c7dd;
-$warning: #b68c19;
-$danger: #d81196;
-$dark: #2b2118;
-$light: #f7f3e3;
+$primary: #ae0d0d;
+$info: #54d81d;
+$success: #66c0e1;
+$warning: #d14dc0;
+$danger: #9b5f93;
+$dark: #231f20;
+$light: #d9d9d9;
 
 @import "./node_modules/bootstrap/scss/maps";
 @import "./node_modules/bootstrap/scss/mixins";
 
 $custom-colors: (
-  "grey": #c8d1da,
+  "grey": #c6b6b6,
+  "lightest": #e7e7e7,
+  "black": #04151f,
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
