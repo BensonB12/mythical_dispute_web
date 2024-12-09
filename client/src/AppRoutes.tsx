@@ -9,7 +9,7 @@ import { FC } from "react";
 import { Info } from "./pages/Info/Info";
 import { Settings } from "./pages/Settings/Settings";
 import { PlayingOptions } from "./pages/PlayingOptions";
-import { Profile } from "./pages/Profile";
+import { Profile } from "./pages/Profile/Profile";
 
 export const AppRoutes: FC<{
   backgroundImageControl: BackgroundImageControl;
