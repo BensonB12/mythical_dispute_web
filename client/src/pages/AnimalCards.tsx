@@ -1,7 +1,13 @@
 import { useGetCardsQuery } from "../hooks/cardHook";
 import { AnimalCard } from "../components/AnimalCard";
+import { BackgroundImageControl } from "../controls/useBackgroundImageControl";
+import { FC } from "react";
+import { BackgroundOption } from "../models/backgroundOption";
 
-export const AnimalCards = () => {
+export const AnimalCards: FC<{
+  backgroundImageControl: BackgroundImageControl;
+}> = ({ backgroundImageControl }) => {
+  backgroundImageControl.setValue(BackgroundOption.SECONDARY);
   const { data: cards } = useGetCardsQuery();
 
   return (

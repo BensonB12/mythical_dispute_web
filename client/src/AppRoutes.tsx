@@ -4,16 +4,23 @@ import { Lost } from "./pages/Lost";
 import { AnimalCards } from "./pages/AnimalCards";
 import { DetailedAnimalCards } from "./pages/DetailedAnimalCards";
 import { LoadingAndErrorHandling } from "./components/LoadingAndErrorHandling";
+import { BackgroundImageControl } from "./controls/useBackgroundImageControl";
+import { FC } from "react";
 
-export const AppRoutes = () => {
+export const AppRoutes: FC<{
+  backgroundImageControl: BackgroundImageControl;
+}> = ({ backgroundImageControl }) => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route
+        path="/"
+        element={<Home backgroundImageControl={backgroundImageControl} />}
+      />
       <Route
         path="/cards"
         element={
           <LoadingAndErrorHandling>
-            <AnimalCards />
+            <AnimalCards backgroundImageControl={backgroundImageControl} />
           </LoadingAndErrorHandling>
         }
       />
@@ -21,7 +28,9 @@ export const AppRoutes = () => {
         path="/detailedCards"
         element={
           <LoadingAndErrorHandling>
-            <DetailedAnimalCards />
+            <DetailedAnimalCards
+              backgroundImageControl={backgroundImageControl}
+            />
           </LoadingAndErrorHandling>
         }
       />

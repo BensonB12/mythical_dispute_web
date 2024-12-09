@@ -1,0 +1,31 @@
+.primary {
+  background-image: url("./../assets/bg-duck.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.secondary {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  z-index: 0;
+
+  &::after {
+    content: "";
+    background-image: url("./../assets/bg-grass.jpg");
+    background-size: auto;
+    background-repeat: repeat;
+    background-position: top left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: -2;
+    pointer-events: none;
+  }
+}
