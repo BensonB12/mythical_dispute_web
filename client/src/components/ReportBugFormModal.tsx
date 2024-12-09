@@ -15,12 +15,10 @@ export const ReportBugFormModal: FC<{ startingError?: string }> = ({
 
   const handleSubmit = () => {
     if (!reportControl.error) {
-      console.log("Submitting:", {
-        report: reportControl.value,
-        file: fileControl.value,
-      });
       bugCreationMutation.mutate({
-        report: reportControl.value,
+        report: `${startingError ? `${startingError} - ` : ""}${
+          reportControl.value
+        }`,
         file: fileControl.value,
       });
       reportControl.setValue("");

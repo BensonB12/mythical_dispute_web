@@ -17,13 +17,16 @@ public class BugController : Controller
 
   [HttpPost("new")]
   [IgnoreAntiforgeryToken]
-  public async Task<ActionResult> Post(IFormFile file, [FromForm] string report)
+  public async Task<ActionResult> Post([FromForm] string report, IFormFile? file)
   {
-    await _dbContext.BugReports.AddAsync(new BugReport()
-    {
-      Report = report,
-      AttachedFile = Utils.Converter.ConvertIFormFileToByteArray(file)
-    });
+    var bugReport = new BugReport() { Report = report };
+
+    if (file is not null)
+      bugReport.AttachedFile = Utils.Converter.ConvertIFormFileToByteArray(file);
+
+    await _dbContext.BugReports.AddAsync(bugReport);
+
+    Console.WriteLine($"Report: {report}\nHad an attached file: {file is not null}");
 
     return Ok();
   }
