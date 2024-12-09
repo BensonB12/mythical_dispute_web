@@ -7,7 +7,7 @@ import { LoadingAndErrorHandling } from "./components/LoadingAndErrorHandling";
 import { BackgroundImageControl } from "./controls/useBackgroundImageControl";
 import { FC } from "react";
 import { Info } from "./pages/Info/Info";
-import { Settings } from "./pages/Settings";
+import { Settings } from "./pages/Settings/Settings";
 import { PlayingOptions } from "./pages/PlayingOptions";
 import { Profile } from "./pages/Profile";
 

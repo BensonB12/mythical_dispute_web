@@ -13,8 +13,8 @@ export const AnimalCard: FC<{ card: Card }> = ({ card }) => {
       <button
         type="button"
         className="btn border-0"
-        data-toggle="modal"
-        data-target={`#${card.id}${card.cardName}`}
+        data-bs-toggle="modal"
+        data-bs-target={`#${card.id}${card.cardName}`}
       >
         <div
           className={`${size.w_105} bg-light rounded border-3 border position-relative`}
