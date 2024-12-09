@@ -21,7 +21,7 @@ export const DetailedValuedLocationLogo: FC<{
         } d-flex align-items-center justify-content-center`}
       >
         <div
-          className={`${font.irish_grover} ${shadow.text_shadow} my-auto ${
+          className={`${font.irish_grover} ${shadow.dark} my-auto ${
             isDetailed ? "h1" : ""
           } ${location === Location.AIR ? "" : "text-light"}`}
         >

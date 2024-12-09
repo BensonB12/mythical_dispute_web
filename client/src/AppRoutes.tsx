@@ -6,6 +6,8 @@ import { DetailedAnimalCards } from "./pages/DetailedAnimalCards";
 import { LoadingAndErrorHandling } from "./components/LoadingAndErrorHandling";
 import { BackgroundImageControl } from "./controls/useBackgroundImageControl";
 import { FC } from "react";
+import { Info } from "./pages/Info/Info";
+import { Settings } from "./pages/Settings/Settings";
 
 export const AppRoutes: FC<{
   backgroundImageControl: BackgroundImageControl;
@@ -34,7 +36,18 @@ export const AppRoutes: FC<{
           </LoadingAndErrorHandling>
         }
       />
-      <Route path="*" element={<Lost />} />
+      <Route
+        path="/info"
+        element={<Info backgroundImageControl={backgroundImageControl} />}
+      />
+      <Route
+        path="/settings"
+        element={<Settings backgroundImageControl={backgroundImageControl} />}
+      />
+      <Route
+        path="*"
+        element={<Lost backgroundImageControl={backgroundImageControl} />}
+      />
     </Routes>
   );
 };
