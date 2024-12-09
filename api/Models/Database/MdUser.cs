@@ -23,5 +23,7 @@ public partial class MdUser
 
     public virtual ICollection<Game> GameWinners { get; set; } = new List<Game>();
 
+    public virtual ICollection<BugReport> BugReports { get; set; } = new List<BugReport>();
+
     public virtual UserColor? UserColor { get; set; }
 }

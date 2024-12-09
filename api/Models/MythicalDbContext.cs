@@ -291,6 +291,24 @@ public partial class MythicalDbContext : DbContext
                 .HasColumnName("hex_value");
         });
 
+        modelBuilder.Entity<BugReport>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("bug_report_pkey");
+
+            entity.ToTable("bug_report");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.Report).HasColumnName("report");
+            entity.Property(e => e.AttachedFile).HasColumnName("attached_file");
+            entity.Property(e => e.UploadedAt).HasColumnName("uploaded_at");
+
+            entity.HasOne(d => d.User).WithMany(p => p.BugReports)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("user_id_fkey");
+        });
+
         OnModelCreatingPartial(modelBuilder);
     }
 

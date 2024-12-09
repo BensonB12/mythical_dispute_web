@@ -137,6 +137,15 @@ CREATE TABLE game_overrides (
   FOREIGN KEY (override_id) REFERENCES override(id)
 );
 
+CREATE TABLE bug_report (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER,
+    report TEXT NOT NULL,
+    attached_file BYTEA,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES md_user(id) ON DELETE SET NULL
+);
+
 -- If either the card, game, or card_zone is null, delete the row
 CREATE FUNCTION delete_game_card_if_any_null()
 RETURNS TRIGGER AS $$
