@@ -8,6 +8,8 @@ import { BackgroundImageControl } from "./controls/useBackgroundImageControl";
 import { FC } from "react";
 import { Info } from "./pages/Info/Info";
 import { Settings } from "./pages/Settings/Settings";
+import { PlayingOptions } from "./pages/PlayingOptions";
+import { Profile } from "./pages/Profile";
 
 export const AppRoutes: FC<{
   backgroundImageControl: BackgroundImageControl;
@@ -43,6 +45,16 @@ export const AppRoutes: FC<{
       <Route
         path="/settings"
         element={<Settings backgroundImageControl={backgroundImageControl} />}
+      />
+      <Route
+        path="/playingOptions"
+        element={
+          <PlayingOptions backgroundImageControl={backgroundImageControl} />
+        }
+      />
+      <Route
+        path="/profile"
+        element={<Profile backgroundImageControl={backgroundImageControl} />}
       />
       <Route
         path="*"

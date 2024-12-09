@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { BackgroundImageControl } from "../controls/useBackgroundImageControl";
 import { BackgroundOption } from "../models/backgroundOption";
 import { Logo } from "../components/Logo";
@@ -9,17 +9,28 @@ import { BackgroundCredit } from "../components/BackgroundCredit";
 export const Home: FC<{
   backgroundImageControl: BackgroundImageControl;
 }> = ({ backgroundImageControl }) => {
-  backgroundImageControl.setValue(BackgroundOption.PRIMARY);
+  useEffect(() => {
+    backgroundImageControl.setValue(BackgroundOption.PRIMARY);
+  }, [backgroundImageControl]);
+
   return (
     <div>
       <HeadNav />
-      <div className="mb-5">
+      <div className="mb-5 mt-3 mt-sm-none">
         <Logo />
       </div>
       <div className="text-center">
-        <ClassicButton icon="bi-play-btn-fill" label={"Play"} />
+        <ClassicButton
+          icon="bi-file-play"
+          label={"Play"}
+          to={"/playingOptions"}
+        />
         <br />
-        <ClassicButton icon="bi-person-circle" label={"Profile"} />
+        <ClassicButton
+          icon="bi-person-circle"
+          label={"Profile"}
+          to={"/profile"}
+        />
       </div>
       <BackgroundCredit artistName="pixaguck" />
     </div>

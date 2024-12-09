@@ -8,9 +8,9 @@ export const NavItem = ({
 }: {
   to: string;
   iconClass: string;
-  label: string;
+  label?: string;
 }) => (
-  <div className={`${shadow.light} col text-center`}>
+  <div className={`${shadow.light} col text-center m-0 p-0`}>
     <Link to={to} className="btn border-0">
       <i className={`${iconClass} h1`} />
       <div>{label}</div>
