@@ -4,20 +4,25 @@ import { TextInput } from "../forms/TextInput/TextInput";
 import { useFileUpload } from "../forms/FileUpload/useFileUpload";
 import { FileUpload } from "../forms/FileUpload/FileUpload";
 import toast from "react-hot-toast";
+import { useCreateBugMutation } from "../hooks/bugHook";
 
 export const ReportBugFormModal: FC<{ startingError?: string }> = ({
   startingError,
 }) => {
   const reportControl = useTextInput("", startingError ? false : true);
   const fileControl = useFileUpload();
+  const bugCreationMutation = useCreateBugMutation();
 
   const handleSubmit = () => {
     if (!reportControl.error) {
-      const formData = {
+      console.log("Submitting:", {
         report: reportControl.value,
         file: fileControl.value,
-      };
-      console.log("Submitting:", formData);
+      });
+      bugCreationMutation.mutate({
+        report: reportControl.value,
+        file: fileControl.value,
+      });
       reportControl.setValue("");
       fileControl.clearFile();
       toast.success("Bug Submitted!", {
