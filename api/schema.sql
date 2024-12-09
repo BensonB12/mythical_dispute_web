@@ -28,6 +28,7 @@ DROP TABLE IF EXISTS animal_class CASCADE;
 DROP TABLE IF EXISTS artist CASCADE;
 DROP TABLE IF EXISTS user_color CASCADE;
 DROP TABLE IF EXISTS md_user CASCADE;
+DROP TABLE IF EXISTS bug_report CASCADE;
 
 -- Upgrade by using indexes for game_id, winner_id, player_turn_id, other_player_id ...
 
