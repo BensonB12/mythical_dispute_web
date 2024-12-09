@@ -4,7 +4,7 @@ import { BackgroundOption } from "../../models/backgroundOption";
 import { LocalStorageKey } from "../../models/localStorageKey";
 import { HeadNav } from "../../navigation/HeadNav";
 import { SettingToggle } from "./SettingToggle";
-import { ReportBugForm } from "../../components/ReportBugForm";
+import { ReportBugFormModal } from "../../components/ReportBugFormModal";
 
 export const Settings: FC<{
   backgroundImageControl: BackgroundImageControl;
@@ -52,9 +52,10 @@ export const Settings: FC<{
         </div>
 
         <button
-          data-bs-toggle="modal"
-          data-bs-target="#bugReport"
+          type="button"
           className="ms-2 btn btn-outline-primary my-4"
+          data-bs-toggle="modal"
+          data-bs-target="#ReportBugFormModal"
         >
           <div className="row my-auto h4">
             <div className="col-auto">
@@ -80,23 +81,7 @@ export const Settings: FC<{
         </div>
       </div>
 
-      <div
-        className="modal fade"
-        id="bugReport"
-        tabIndex={-1}
-        role="dialog"
-        aria-labelledby="#bugReportTitle"
-        aria-hidden="true"
-      >
-        <div
-          className="modal-dialog modal-dialog-centered my-auto"
-          role="document"
-        >
-          <div className="model-content mx-auto">
-            <ReportBugForm />
-          </div>
-        </div>
-      </div>
+      <ReportBugFormModal />
     </div>
   );
 };

@@ -74,7 +74,7 @@ export const AnimalCard: FC<{ card: Card }> = ({ card }) => {
         id={`${card.id}${card.cardName}`}
         tabIndex={-1}
         role="dialog"
-        aria-labelledby={`#${card.id}${card.cardName}Title`}
+        aria-labelledby={`${card.id}${card.cardName}Title`}
         aria-hidden="true"
       >
         <div

@@ -2,6 +2,8 @@ import { QueryErrorResetBoundary } from "@tanstack/react-query";
 import { FC, ReactNode, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Spinner } from "./Spinner";
+import { ReportBugFormModal } from "./ReportBugFormModal";
+import { HeadNav } from "../navigation/HeadNav";
 
 export const LoadingAndErrorHandling: FC<{ children: ReactNode }> = ({
   children,
@@ -13,7 +15,8 @@ export const LoadingAndErrorHandling: FC<{ children: ReactNode }> = ({
           onReset={reset}
           fallbackRender={({ error, resetErrorBoundary }) => (
             <div className="text-center">
-              <div className="p-3 rounded bg-danger text-light w-50 mx-auto m-3">
+              <HeadNav />
+              <div className="p-3 rounded bg-primary text-light w-50 mx-auto m-3">
                 {error.message}
               </div>
               <button
@@ -22,6 +25,17 @@ export const LoadingAndErrorHandling: FC<{ children: ReactNode }> = ({
               >
                 Try again
               </button>
+              <br />
+              <button
+                type="button"
+                className="btn btn-outline-primary mt-3"
+                data-bs-toggle="modal"
+                data-bs-target="#ReportBugFormModal"
+              >
+                <i className="bi-bug me-1" />
+                Report a Bug
+              </button>
+              <ReportBugFormModal startingError={error.message} />
             </div>
           )}
         >
