@@ -36,7 +36,7 @@ public class UtilTests
         // Arrange
         var currentDirectory = Directory.GetCurrentDirectory();
 
-        while (currentDirectory.Split("\\").Last().ToLower() != "apitests")
+        while (currentDirectory.Split(Path.DirectorySeparatorChar).Last().ToLower() != "apitests")
         {
             currentDirectory = Directory.GetParent(currentDirectory)?.FullName;
 
@@ -46,7 +46,7 @@ public class UtilTests
             }
         }
 
-        var fileStream = new FileStream(currentDirectory + "./TestFile.txt", FileMode.Open, FileAccess.Read);
+        var fileStream = new FileStream(currentDirectory + "/TestFile.txt", FileMode.Open, FileAccess.Read);
 
         var formFile = new FormFile(fileStream, 0, fileStream.Length, "file", Path.GetFileName("./TestFile.txt"))
         {

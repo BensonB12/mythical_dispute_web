@@ -9,25 +9,25 @@ namespace Api.Controllers;
 [ApiController]
 public class BugController : Controller
 {
-  MythicalDbContext _dbContext;
-  public BugController(MythicalDbContext dbContext)
-  {
-    _dbContext = dbContext;
-  }
+    MythicalDbContext _dbContext;
+    public BugController(MythicalDbContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
 
-  [HttpPost("new")]
-  [IgnoreAntiforgeryToken]
-  public async Task<ActionResult> Post([FromForm] string report, IFormFile? file)
-  {
-    var bugReport = new BugReport() { Report = report };
+    [HttpPost("new")]
+    [IgnoreAntiforgeryToken]
+    public async Task<ActionResult> Post([FromForm] string report, IFormFile? file)
+    {
+        var bugReport = new BugReport() { Report = report };
 
-    if (file is not null)
-      bugReport.AttachedFile = Utils.Converter.ConvertIFormFileToByteArray(file);
+        if (file is not null)
+            bugReport.AttachedFile = Utils.Converter.ConvertIFormFileToByteArray(file);
 
-    await _dbContext.BugReports.AddAsync(bugReport);
+        await _dbContext.BugReports.AddAsync(bugReport);
 
-    Console.WriteLine($"Report: {report}\nHad an attached file: {file is not null}");
+        Console.WriteLine($"Report: {report}\nHad an attached file: {file is not null}");
 
-    return Ok();
-  }
+        return Ok();
+    }
 }
