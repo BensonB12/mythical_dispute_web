@@ -1,7 +1,7 @@
 import { QueryErrorResetBoundary } from "@tanstack/react-query";
 import { FC, ReactNode, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { Spinner } from "./Spinner";
+import { Spinner } from "./Spinner/Spinner";
 import { ReportBugFormModal } from "./ReportBugFormModal";
 import { HeadNav } from "../navigation/HeadNav";
 
