@@ -34,7 +34,7 @@ export const Settings: FC<{
           iconOff="bi-volume-mute"
         />
         <div className="ps-2 small text-secondary mb-5">
-          Adjust the sound settings for your game.
+          Adjust the sound settings for your game
         </div>
 
         <div className="row mx-0 my-5">

@@ -3,6 +3,7 @@ import { useTextInput } from "../forms/TextInput/useTextInput";
 import { TextInput } from "../forms/TextInput/TextInput";
 import { useFileUpload } from "../forms/FileUpload/useFileUpload";
 import { FileUpload } from "../forms/FileUpload/FileUpload";
+import toast from "react-hot-toast";
 
 export const ReportBugFormModal: FC<{ startingError?: string }> = ({
   startingError,
@@ -19,8 +20,16 @@ export const ReportBugFormModal: FC<{ startingError?: string }> = ({
       console.log("Submitting:", formData);
       reportControl.setValue("");
       fileControl.clearFile();
+      toast.success("Bug Submitted!", {
+        icon: <i className="bi bi-check-circle-fill text-success" />,
+        className: "bg-light",
+      });
     } else {
       console.error("Form validation failed");
+      toast.error("No Data, No Submission", {
+        icon: <i className="bi bi-x-circle-fill text-danger" />,
+        className: "bg-light",
+      });
     }
   };
 
