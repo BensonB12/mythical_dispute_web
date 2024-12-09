@@ -3,7 +3,7 @@ using api.Models;
 using Microsoft.EntityFrameworkCore;
 using DotNetEnv;
 
-namespace Api;
+namespace api;
 
 public class Program
 {

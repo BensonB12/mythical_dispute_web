@@ -1,4 +1,4 @@
-namespace Api.Utils;
+namespace api.Utils;
 
 public static class Converter
 {
