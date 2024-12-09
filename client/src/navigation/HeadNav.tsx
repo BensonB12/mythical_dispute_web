@@ -25,7 +25,7 @@ export const HeadNav = () => {
             <NavItem key={to} to={to} iconClass={iconClass} label={label} />
           ))}
       </div>
-      <div className="row fixed-bottom mx-0 mb-3 d-sm-none">
+      <div className="row fixed-bottom mx-0 mb-2 d-sm-none">
         {navLinks
           .filter((l) => l.to !== location.pathname)
           .map(({ to, iconClass }) => (

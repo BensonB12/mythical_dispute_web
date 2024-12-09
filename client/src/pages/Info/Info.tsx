@@ -12,7 +12,7 @@ export const Info: FC<{
   }, [backgroundImageControl]);
 
   return (
-    <div className="bg-lightest h-100">
+    <div>
       <HeadNav />
       <div className="px-3">
         <InfoDisplay

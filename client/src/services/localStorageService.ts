@@ -6,9 +6,10 @@ export const LocalStorageService = {
     if (localPreference) return localPreference === "true";
 
     const defaultValue = preferenceType === LocalStorageKey.SOUND;
-
     localStorage.setItem(preferenceType, defaultValue ? "true" : "false");
-
     return defaultValue;
+  },
+  setPreference(preferenceType: LocalStorageKey, newValue: boolean) {
+    localStorage.setItem(preferenceType, newValue ? "true" : "false");
   },
 };

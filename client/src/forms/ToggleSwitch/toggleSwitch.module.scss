@@ -1,0 +1,26 @@
+@use "./../../../custom.scss" as custom;
+
+.circle {
+  width: 30px;
+  height: 30px;
+  background-color: map-get(custom.$custom-colors, "lightest") !important;
+  border-radius: 100% !important;
+}
+
+.oval_off {
+  width: 80px;
+  height: 37px;
+  background-color: map-get(custom.$custom-colors, "grey");
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.oval_on {
+  width: 80px;
+  height: 37px;
+  background-color: custom.$success;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
