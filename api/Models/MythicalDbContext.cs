@@ -41,6 +41,8 @@ public partial class MythicalDbContext : DbContext
 
     public virtual DbSet<UserColor> UserColors { get; set; }
 
+    public virtual DbSet<BugReport> BugReports { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<AnimalClass>(entity =>
