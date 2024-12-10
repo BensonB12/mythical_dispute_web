@@ -5,7 +5,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-ENV VITE_API_URL http://api.mythical-dispute.duckdns.org/api
+ENV VITE_API_URL https://api.mythical-dispute.duckdns.org/api
 RUN npm run build
 
 FROM nginx:alpine
