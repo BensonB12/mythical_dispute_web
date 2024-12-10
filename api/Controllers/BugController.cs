@@ -1,5 +1,6 @@
 using System.Reflection.Metadata.Ecma335;
 using api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,15 @@ public class BugController : Controller
     public BugController(MythicalDbContext dbContext)
     {
         _dbContext = dbContext;
+    }
+
+    [HttpGet("all")]
+    [Authorize]
+    public async Task<ActionResult<IEnumerable<string>>> Get()
+    {
+        return Ok(
+            await _dbContext.BugReports.Select(b => b.Report).ToListAsync()
+        );
     }
 
     [HttpPost("new")]

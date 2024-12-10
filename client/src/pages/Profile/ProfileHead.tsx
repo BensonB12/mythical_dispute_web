@@ -1,4 +1,4 @@
-import { LoginButton } from "../../features/auth/LoginButton";
+import { LoginButton } from "./LoginButton";
 import { User } from "../../models/user";
 import size from "../../styles/sizes.module.scss";
 
@@ -7,7 +7,7 @@ export const ProfileHead = () => {
     id: -1,
     userName: "Benson",
     notifications: true,
-    userColor: "#5E39A1",
+    userColor: "#41EAD4",
   };
 
   return (

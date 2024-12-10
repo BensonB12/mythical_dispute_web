@@ -2,6 +2,8 @@ using System.Text.Json.Serialization;
 using api.Models;
 using Microsoft.EntityFrameworkCore;
 using DotNetEnv;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace api;
 
@@ -41,25 +43,25 @@ public class Program
             options.UseNpgsql(dbConfigString));
 
         // https://www.infoworld.com/article/2336284/how-to-implement-jwt-authentication-in-aspnet-core.html
-        // builder.Services.AddAuthentication(options =>
-        //     {
-        //     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        //     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        //     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-        // }).AddJwtBearer(o =>
-        // {
-        //     o.TokenValidationParameters = new TokenValidationParameters
-        //     {
-        //         ValidIssuer = Environment.GetEnvironmentVariable["Jwt:Issuer"],
-        //         ValidAudience = Environment.GetEnvironmentVariable["Jwt:Audience"],
-        //         // IssuerSigningKey = new SymmetricSecurityKey
-        //         // (Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable["Jwt:Key"])),
-        //         ValidateIssuer = true,
-        //         ValidateAudience = true,
-        //         ValidateLifetime = false,
-        //         ValidateIssuerSigningKey = true
-        //     };
-        // });
+        builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(o =>
+            {
+                o.Authority = "https://auth.snowse-ts.duckdns.org/realms/Benson/";
+                o.Audience = builder.Configuration["Jwt:Audience"];
+                o.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true
+                };
+            });
+
+        // builder.Services.AddAuthorization();
 
 
         var app = builder.Build();
@@ -88,6 +90,7 @@ public class Program
         app.UseRouting();
 
         app.UseAuthorization();
+        // app.UseAuthorization();
 
         app.MapGet("/api/health", () => true);
         app.MapControllers();

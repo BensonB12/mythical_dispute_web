@@ -241,6 +241,11 @@ WHEN (OLD.artist_id IS DISTINCT FROM NEW.artist_id AND NEW.artist_id IS NULL)
 EXECUTE FUNCTION update_img_url_when_artist_id_null();
 
 INSERT INTO user_color (hex_value) VALUES ('#41EAD4');
+INSERT INTO user_color (hex_value) VALUES ('#EFD6AC');
+INSERT INTO user_color (hex_value) VALUES ('#66C0E1');
+INSERT INTO user_color (hex_value) VALUES ('#20E468');
+INSERT INTO user_color (hex_value) VALUES ('#54D81D');
+INSERT INTO user_color (hex_value) VALUES ('#E815CD');
 
 -- Set the teal to be the default
 DO $$

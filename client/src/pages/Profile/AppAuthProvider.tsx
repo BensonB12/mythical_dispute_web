@@ -6,8 +6,9 @@ import { FC, ReactNode } from "react";
 // Needs to be updated to env variables for off campus and on campus...
 const oidcConfig: AuthProviderProps = {
   authority: "https://auth.snowse-ts.duckdns.org/realms/Benson/",
-  client_id: "client1", // env
-  redirect_uri: "https://mythical-dispute.duckdns.org/profile", // didn't work on env
+  client_id: "client1",
+  redirect_uri: "https://mythical-dispute.duckdns.org/profile",
+  automaticSilentRenew: true,
   onSigninCallback: async (user) => {
     console.log("YOU ARE LOGGED IN, in signinCallback");
     const newUrl = window.location.href.split("?")[0]; // Make sure to keep params you want

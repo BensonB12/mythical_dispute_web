@@ -19,17 +19,17 @@ export const Profile: FC<{
   const opponents = [
     {
       userName: "Alan",
-      userColor: "#AAA321",
+      userColor: "#EFD6AC",
       winPercentage: "15%",
     },
     {
       userName: "Katelyn",
-      userColor: "#000321",
+      userColor: "#66C0E1",
       winPercentage: "5%",
     },
     {
       userName: "Cade",
-      userColor: "#321F00",
+      userColor: "#20E468",
       winPercentage: "55%",
     },
   ];
