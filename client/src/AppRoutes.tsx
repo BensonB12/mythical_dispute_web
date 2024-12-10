@@ -11,6 +11,7 @@ import { Settings } from "./pages/Settings/Settings";
 import { PlayingOptions } from "./pages/PlayingOptions";
 import { Profile } from "./pages/Profile/Profile";
 import { BugReports } from "./pages/BugReports";
+import { ComingSoon } from "./pages/ComingSoon";
 
 export const AppRoutes: FC<{
   backgroundImageControl: BackgroundImageControl;
@@ -61,11 +62,21 @@ export const AppRoutes: FC<{
         path="/bugReports"
         element={
           <LoadingAndErrorHandling>
-            <BugReports
-              backgroundImageControl={backgroundImageControl}
-            />
+            <BugReports backgroundImageControl={backgroundImageControl} />
           </LoadingAndErrorHandling>
         }
+      />
+      <Route
+        path="/hostGame"
+        element={<ComingSoon backgroundImageControl={backgroundImageControl} />}
+      />
+      <Route
+        path="/joinGame"
+        element={<ComingSoon backgroundImageControl={backgroundImageControl} />}
+      />
+      <Route
+        path="/randomOpponent"
+        element={<ComingSoon backgroundImageControl={backgroundImageControl} />}
       />
       <Route
         path="*"
