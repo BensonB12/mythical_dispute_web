@@ -11,7 +11,7 @@ export const ProfileHead = () => {
   };
 
   return (
-    <div className="row justify-content-center my-4 mx-0">
+    <div className="row border-grey border-3 border justify-content-center m-4 p-2 rounded">
       <div className="col-8 col-sm-auto my-auto">
         <LoginButton />
       </div>

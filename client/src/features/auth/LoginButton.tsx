@@ -1,4 +1,5 @@
 import { useAuth } from "react-oidc-context";
+import { Spinner } from "../../components/Spinner/Spinner";
 
 export function LoginButton() {
   const auth = useAuth();
@@ -13,37 +14,36 @@ export function LoginButton() {
 
   switch (auth.activeNavigator) {
     case "signinSilent":
-      return <div>Signing you in...</div>;
+      return <div className="bg-success rounded">Signing you in...</div>;
     case "signoutRedirect":
-      return <div>Signing you out...</div>;
+      return <div className="bg-warning rounded">Signing you out...</div>;
   }
 
   if (auth.isLoading) {
-    return <div>Loading...</div>;
+    return <Spinner numberOfPaws={1} />;
   }
 
   if (auth.error) {
-    return <div>Oops... {auth.error.message}</div>;
+    return (
+      <div className="bg-primary rounded">Oops... {auth.error.message}</div>
+    );
   }
 
   if (auth.isAuthenticated) {
     console.log(auth.user);
     return (
-      <div>
-        Hello {auth.user?.profile.sub}{" "}
-        <button
-          className="btn btn-outline-primary"
-          onClick={() => void auth.removeUser()}
-        >
-          Log out
-        </button>
-      </div>
+      <button
+        className="btn btn-outline-primary"
+        onClick={() => void auth.removeUser()}
+      >
+        Log out
+      </button>
     );
   }
 
   return (
     <button
-      className="btn btn-primary"
+      className="btn btn-primary btn-lg"
       onClick={() => void auth.signinRedirect()}
     >
       Log in

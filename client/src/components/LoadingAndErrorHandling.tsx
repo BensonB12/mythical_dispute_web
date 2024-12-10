@@ -39,7 +39,15 @@ export const LoadingAndErrorHandling: FC<{ children: ReactNode }> = ({
             </div>
           )}
         >
-          <Suspense fallback={<Spinner />}>{children}</Suspense>
+          <Suspense
+            fallback={
+              <div className="m-5">
+                <Spinner />
+              </div>
+            }
+          >
+            {children}
+          </Suspense>
         </ErrorBoundary>
       )}
     </QueryErrorResetBoundary>

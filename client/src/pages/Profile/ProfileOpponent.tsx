@@ -8,7 +8,7 @@ export const ProfileOpponent: FC<{
   return (
     <div className="row border-grey border rounded m-3 px-3 px-lg-1 justify-content-between">
       <div
-        className="col-auto rounded my-auto h3"
+        className="col-auto rounded my-auto h3 py-1"
         style={{ backgroundColor: userColor }}
       >
         {userName}

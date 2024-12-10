@@ -7,7 +7,9 @@ import { FC, ReactNode } from "react";
 const oidcConfig: AuthProviderProps = {
   authority: "https://auth.snowse-ts.duckdns.org/realms/Benson/",
   client_id: "client1", // env
-  redirect_uri: "https://mythical-dispute.duckdns.org/", // didn't work on env
+  redirect_uri: import.meta.env.DEV
+    ? "http://localhost:5173/profile"
+    : "https://mythical-dispute.duckdns.org/profile", // didn't work on env
   onSigninCallback: async (user) => {
     console.log("YOU ARE LOGGED IN, in signinCallback");
     const newUrl = window.location.href.split("?")[0]; // Make sure to keep params you want

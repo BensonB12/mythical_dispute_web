@@ -36,21 +36,25 @@ export const Profile: FC<{
 
   const mythicals = [
     {
+      id: 134,
       imageSource: "/image/Katelyn.png",
       games: 8,
     },
     {
+      id: 423,
+      imageSource: "/image/Blackjack.png",
+      games: 0,
+      most: false,
+    },
+    {
+      id: 323,
       imageSource: "/image/Waldo.png",
       winPercentage: "50%",
     },
     {
+      id: 222,
       imageSource: "/image/Draco.png",
       winPercentage: "10%",
-      most: false,
-    },
-    {
-      imageSource: "/image/Blackjack.png",
-      games: 0,
       most: false,
     },
   ];
@@ -79,9 +83,9 @@ export const Profile: FC<{
             <ProfileData icon={"bi-bar-chart"} label={"Wins"} value={`${34}`} />
           </div>
         </div>
-        <div className="row">
+        <div className="row mx-0">
           {opponents.map((o) => (
-            <div className="col-lg">
+            <div key={o.userName} className="col-lg">
               <ProfileOpponent
                 userColor={o.userColor}
                 userName={o.userName}
@@ -90,14 +94,18 @@ export const Profile: FC<{
             </div>
           ))}
         </div>
-        {mythicals.map((m) => (
-          <ProfileMythical
-            imageSource={m.imageSource}
-            most={m.most}
-            games={m.games}
-            winPercentage={m.winPercentage}
-          />
-        ))}
+        <div className="row mx-0 mb-5">
+          {mythicals.map((m) => (
+            <div key={m.id} className="col-md-6 col-xl-3">
+              <ProfileMythical
+                imageSource={m.imageSource}
+                most={m.most}
+                games={m.games}
+                winPercentage={m.winPercentage}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
