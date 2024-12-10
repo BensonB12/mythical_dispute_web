@@ -14,9 +14,9 @@ export function LoginButton() {
 
   switch (auth.activeNavigator) {
     case "signinSilent":
-      return <div className="bg-success rounded">Signing you in...</div>;
+      return <div className="bg-success rounded p-1">Signing you in...</div>;
     case "signoutRedirect":
-      return <div className="bg-warning rounded">Signing you out...</div>;
+      return <div className="bg-warning rounded p-1">Signing you out...</div>;
   }
 
   if (auth.isLoading) {
@@ -25,7 +25,9 @@ export function LoginButton() {
 
   if (auth.error) {
     return (
-      <div className="bg-primary rounded">Oops... {auth.error.message}</div>
+      <div className="bg-primary rounded text-light">
+        Oops... {auth.error.message}
+      </div>
     );
   }
 
@@ -33,7 +35,7 @@ export function LoginButton() {
     console.log(auth.user);
     return (
       <button
-        className="btn btn-outline-primary"
+        className="btn btn-outline-primary btn-lg"
         onClick={() => void auth.removeUser()}
       >
         Log out
