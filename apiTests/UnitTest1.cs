@@ -1,4 +1,4 @@
-using Api.Utils;
+using api.Utils;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Moq;
