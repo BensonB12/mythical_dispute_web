@@ -18,7 +18,7 @@ export const SettingToggle: FC<{
   };
 
   return (
-    <div className="row mx-0 my-5">
+    <div className="row mx-0">
       <div className="col-auto h4">
         <i className={isOn ? iconOn : iconOff} />
       </div>

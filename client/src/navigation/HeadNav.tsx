@@ -14,6 +14,7 @@ export const HeadNav = () => {
     { to: "/cards", iconClass: "bi-list", label: "Basic Cards" },
     { to: "/info", iconClass: "bi-info-circle", label: "Info" },
     { to: "/settings", iconClass: "bi-gear", label: "Settings" },
+    { to: "/profile", iconClass: "bi-person-circle", label: "Profile" },
   ];
 
   return (

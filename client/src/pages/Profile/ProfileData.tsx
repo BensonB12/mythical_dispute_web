@@ -10,8 +10,8 @@ export const ProfileData: FC<{
       <div className="col-auto">
         <i className={`${icon} h2`} />
       </div>
-      <div className="col">{label}</div>
-      <div className="col-auto border-grey border">{value}</div>
+      <div className="col text-center my-auto">{label}</div>
+      <div className="col-auto border-grey border rounded my-auto">{value}</div>
     </div>
   );
 };

@@ -31,10 +31,22 @@ export function LoginButton() {
     return (
       <div>
         Hello {auth.user?.profile.sub}{" "}
-        <button onClick={() => void auth.removeUser()}>Log out</button>
+        <button
+          className="btn btn-outline-primary"
+          onClick={() => void auth.removeUser()}
+        >
+          Log out
+        </button>
       </div>
     );
   }
 
-  return <button onClick={() => void auth.signinRedirect()}>Log in</button>;
+  return (
+    <button
+      className="btn btn-primary"
+      onClick={() => void auth.signinRedirect()}
+    >
+      Log in
+    </button>
+  );
 }

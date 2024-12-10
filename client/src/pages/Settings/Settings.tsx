@@ -17,24 +17,28 @@ export const Settings: FC<{
     <div>
       <HeadNav />
       <div className="p-3">
-        <SettingToggle
-          label="Notifications"
-          preferenceKey={LocalStorageKey.NOTIFICATIONS}
-          iconOn="bi-bell"
-          iconOff="bi-bell-slash"
-        />
-        <div className="ps-2 small text-secondary mb-5">
-          Notifications will let you know when it's your turn
+        <div className="my-5">
+          <SettingToggle
+            label="Notifications"
+            preferenceKey={LocalStorageKey.NOTIFICATIONS}
+            iconOn="bi-bell"
+            iconOff="bi-bell-slash"
+          />
+          <div className="ps-2 small text-secondary mb-5">
+            Notifications will let you know when it's your turn
+          </div>
         </div>
 
-        <SettingToggle
-          label="Sound"
-          preferenceKey={LocalStorageKey.SOUND}
-          iconOn="bi-volume-up"
-          iconOff="bi-volume-mute"
-        />
-        <div className="ps-2 small text-secondary mb-5">
-          Adjust the sound settings for your game
+        <div className="my-5">
+          <SettingToggle
+            label="Sound"
+            preferenceKey={LocalStorageKey.SOUND}
+            iconOn="bi-volume-up"
+            iconOff="bi-volume-mute"
+          />
+          <div className="ps-2 small text-secondary mb-5">
+            Adjust the sound settings for your game
+          </div>
         </div>
 
         <div className="row mx-0 my-5">
